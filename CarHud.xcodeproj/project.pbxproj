@@ -7,12 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F1B9B2861B656AF700856A00 /* CHSecondaryDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B9B2851B656AF700856A00 /* CHSecondaryDisplayController.swift */; };
+		F1B9B28D1B656D5B00856A00 /* CHSpeedLimitDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B9B28C1B656D5B00856A00 /* CHSpeedLimitDisplayController.swift */; };
+		F1B9B28F1B656D7200856A00 /* CHPowerDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B9B28E1B656D7200856A00 /* CHPowerDisplayController.swift */; };
+		F1B9B2911B656D7E00856A00 /* CHEngineDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B9B2901B656D7E00856A00 /* CHEngineDisplayController.swift */; };
+		F1B9B2931B656D8B00856A00 /* CHFuelDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B9B2921B656D8B00856A00 /* CHFuelDisplayController.swift */; };
+		F1B9B2961B65703900856A00 /* CHSecondaryDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B9B2951B65703900856A00 /* CHSecondaryDisplay.swift */; };
 		F1E176791B645F820061C905 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E176781B645F820061C905 /* AppDelegate.swift */; };
-		F1E1767B1B645F820061C905 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E1767A1B645F820061C905 /* ViewController.swift */; };
 		F1E1767E1B645F820061C905 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E1767C1B645F820061C905 /* Main.storyboard */; };
 		F1E176801B645F820061C905 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1E1767F1B645F820061C905 /* Images.xcassets */; };
 		F1E176831B645F820061C905 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1E176811B645F820061C905 /* LaunchScreen.xib */; };
 		F1E1768F1B645F820061C905 /* CarHudTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E1768E1B645F820061C905 /* CarHudTests.swift */; };
+		F1E1769C1B64E0120061C905 /* CHGaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E1769B1B64E0120061C905 /* CHGaugeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,16 +32,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F1B9B2851B656AF700856A00 /* CHSecondaryDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHSecondaryDisplayController.swift; sourceTree = "<group>"; };
+		F1B9B28C1B656D5B00856A00 /* CHSpeedLimitDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHSpeedLimitDisplayController.swift; sourceTree = "<group>"; };
+		F1B9B28E1B656D7200856A00 /* CHPowerDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHPowerDisplayController.swift; sourceTree = "<group>"; };
+		F1B9B2901B656D7E00856A00 /* CHEngineDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHEngineDisplayController.swift; sourceTree = "<group>"; };
+		F1B9B2921B656D8B00856A00 /* CHFuelDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHFuelDisplayController.swift; sourceTree = "<group>"; };
+		F1B9B2951B65703900856A00 /* CHSecondaryDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHSecondaryDisplay.swift; sourceTree = "<group>"; };
 		F1E176731B645F820061C905 /* CarHud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarHud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1E176771B645F820061C905 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1E176781B645F820061C905 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F1E1767A1B645F820061C905 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F1E1767D1B645F820061C905 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F1E1767F1B645F820061C905 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F1E176821B645F820061C905 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F1E176881B645F820061C905 /* CarHudTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarHudTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1E1768D1B645F820061C905 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1E1768E1B645F820061C905 /* CarHudTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarHudTests.swift; sourceTree = "<group>"; };
+		F1E1769B1B64E0120061C905 /* CHGaugeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHGaugeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,67 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F1B9B2841B656AC200856A00 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F1B9B2871B656CC100856A00 /* SecondaryDisplays */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		F1B9B2871B656CC100856A00 /* SecondaryDisplays */ = {
+			isa = PBXGroup;
+			children = (
+				F1B9B2851B656AF700856A00 /* CHSecondaryDisplayController.swift */,
+				F1B9B2941B656F9B00856A00 /* Displays */,
+			);
+			name = SecondaryDisplays;
+			sourceTree = "<group>";
+		};
+		F1B9B2881B656CDB00856A00 /* FuelDisplay */ = {
+			isa = PBXGroup;
+			children = (
+				F1B9B2921B656D8B00856A00 /* CHFuelDisplayController.swift */,
+			);
+			name = FuelDisplay;
+			sourceTree = "<group>";
+		};
+		F1B9B2891B656CDE00856A00 /* EngineDisplay */ = {
+			isa = PBXGroup;
+			children = (
+				F1B9B2901B656D7E00856A00 /* CHEngineDisplayController.swift */,
+			);
+			name = EngineDisplay;
+			sourceTree = "<group>";
+		};
+		F1B9B28A1B656CE100856A00 /* PowerDisplay */ = {
+			isa = PBXGroup;
+			children = (
+				F1B9B28E1B656D7200856A00 /* CHPowerDisplayController.swift */,
+			);
+			name = PowerDisplay;
+			sourceTree = "<group>";
+		};
+		F1B9B28B1B656D2700856A00 /* SpeedLimitDisplay */ = {
+			isa = PBXGroup;
+			children = (
+				F1B9B28C1B656D5B00856A00 /* CHSpeedLimitDisplayController.swift */,
+			);
+			name = SpeedLimitDisplay;
+			sourceTree = "<group>";
+		};
+		F1B9B2941B656F9B00856A00 /* Displays */ = {
+			isa = PBXGroup;
+			children = (
+				F1B9B2951B65703900856A00 /* CHSecondaryDisplay.swift */,
+				F1B9B28B1B656D2700856A00 /* SpeedLimitDisplay */,
+				F1B9B28A1B656CE100856A00 /* PowerDisplay */,
+				F1B9B2891B656CDE00856A00 /* EngineDisplay */,
+				F1B9B2881B656CDB00856A00 /* FuelDisplay */,
+			);
+			name = Displays;
+			sourceTree = "<group>";
+		};
 		F1E1766A1B645F820061C905 = {
 			isa = PBXGroup;
 			children = (
@@ -77,8 +150,9 @@
 		F1E176751B645F820061C905 /* CarHud */ = {
 			isa = PBXGroup;
 			children = (
+				F1E176981B64DFCE0061C905 /* Views */,
+				F1B9B2841B656AC200856A00 /* Controllers */,
 				F1E176781B645F820061C905 /* AppDelegate.swift */,
-				F1E1767A1B645F820061C905 /* ViewController.swift */,
 				F1E1767C1B645F820061C905 /* Main.storyboard */,
 				F1E1767F1B645F820061C905 /* Images.xcassets */,
 				F1E176811B645F820061C905 /* LaunchScreen.xib */,
@@ -110,6 +184,14 @@
 				F1E1768D1B645F820061C905 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F1E176981B64DFCE0061C905 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F1E1769B1B64E0120061C905 /* CHGaugeView.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +238,7 @@
 		F1E1766B1B645F820061C905 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = CH;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Thorsten Kober";
 				TargetAttributes = {
@@ -212,8 +295,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1E1767B1B645F820061C905 /* ViewController.swift in Sources */,
+				F1B9B2931B656D8B00856A00 /* CHFuelDisplayController.swift in Sources */,
 				F1E176791B645F820061C905 /* AppDelegate.swift in Sources */,
+				F1B9B2861B656AF700856A00 /* CHSecondaryDisplayController.swift in Sources */,
+				F1E1769C1B64E0120061C905 /* CHGaugeView.swift in Sources */,
+				F1B9B2961B65703900856A00 /* CHSecondaryDisplay.swift in Sources */,
+				F1B9B28F1B656D7200856A00 /* CHPowerDisplayController.swift in Sources */,
+				F1B9B28D1B656D5B00856A00 /* CHSpeedLimitDisplayController.swift in Sources */,
+				F1B9B2911B656D7E00856A00 /* CHEngineDisplayController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +498,7 @@
 				F1E176941B645F830061C905 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F1E176951B645F830061C905 /* Build configuration list for PBXNativeTarget "CarHudTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +507,7 @@
 				F1E176971B645F830061C905 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
