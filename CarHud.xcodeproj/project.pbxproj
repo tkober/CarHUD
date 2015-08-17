@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC89D2B11B82007700C89C5E /* CHLookAhead.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89D2B01B82007700C89C5E /* CHLookAhead.swift */; };
+		DC89D2B31B8200D600C89C5E /* CHScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89D2B21B8200D600C89C5E /* CHScanner.swift */; };
+		DC89D2B51B82031000C89C5E /* CHOBD2Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89D2B41B82031000C89C5E /* CHOBD2Parser.swift */; };
+		DC89D2B71B8205C700C89C5E /* CHOBD2ParserRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89D2B61B8205C700C89C5E /* CHOBD2ParserRule.swift */; };
+		DC89D2B91B82064100C89C5E /* CHOBD2Connector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89D2B81B82064100C89C5E /* CHOBD2Connector.swift */; };
+		DC89D2BD1B821D4F00C89C5E /* CHOBD2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89D2BC1B821D4F00C89C5E /* CHOBD2.swift */; };
 		F1B9B2861B656AF700856A00 /* CHSecondaryDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B9B2851B656AF700856A00 /* CHSecondaryDisplayController.swift */; };
 		F1B9B28D1B656D5B00856A00 /* CHSpeedLimitDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B9B28C1B656D5B00856A00 /* CHSpeedLimitDisplayController.swift */; };
 		F1B9B28F1B656D7200856A00 /* CHPowerDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B9B28E1B656D7200856A00 /* CHPowerDisplayController.swift */; };
@@ -32,6 +38,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DC89D2B01B82007700C89C5E /* CHLookAhead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHLookAhead.swift; sourceTree = "<group>"; };
+		DC89D2B21B8200D600C89C5E /* CHScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHScanner.swift; sourceTree = "<group>"; };
+		DC89D2B41B82031000C89C5E /* CHOBD2Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHOBD2Parser.swift; sourceTree = "<group>"; };
+		DC89D2B61B8205C700C89C5E /* CHOBD2ParserRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHOBD2ParserRule.swift; sourceTree = "<group>"; };
+		DC89D2B81B82064100C89C5E /* CHOBD2Connector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHOBD2Connector.swift; sourceTree = "<group>"; };
+		DC89D2BC1B821D4F00C89C5E /* CHOBD2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHOBD2.swift; sourceTree = "<group>"; };
 		F1B9B2851B656AF700856A00 /* CHSecondaryDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHSecondaryDisplayController.swift; sourceTree = "<group>"; };
 		F1B9B28C1B656D5B00856A00 /* CHSpeedLimitDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHSpeedLimitDisplayController.swift; sourceTree = "<group>"; };
 		F1B9B28E1B656D7200856A00 /* CHPowerDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHPowerDisplayController.swift; sourceTree = "<group>"; };
@@ -68,6 +80,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC89D2AA1B81FFAB00C89C5E /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				DC89D2AB1B81FFB400C89C5E /* OBD2Connector */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		DC89D2AB1B81FFB400C89C5E /* OBD2Connector */ = {
+			isa = PBXGroup;
+			children = (
+				DC89D2BC1B821D4F00C89C5E /* CHOBD2.swift */,
+				DC89D2B81B82064100C89C5E /* CHOBD2Connector.swift */,
+				DC89D2AD1B81FFD700C89C5E /* Parser */,
+				DC89D2AC1B81FFC700C89C5E /* Scanner */,
+			);
+			name = OBD2Connector;
+			sourceTree = "<group>";
+		};
+		DC89D2AC1B81FFC700C89C5E /* Scanner */ = {
+			isa = PBXGroup;
+			children = (
+				DC89D2B21B8200D600C89C5E /* CHScanner.swift */,
+				DC89D2B01B82007700C89C5E /* CHLookAhead.swift */,
+			);
+			name = Scanner;
+			sourceTree = "<group>";
+		};
+		DC89D2AD1B81FFD700C89C5E /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				DC89D2B41B82031000C89C5E /* CHOBD2Parser.swift */,
+				DC89D2B61B8205C700C89C5E /* CHOBD2ParserRule.swift */,
+			);
+			name = Parser;
+			sourceTree = "<group>";
+		};
 		F1B9B2841B656AC200856A00 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +199,7 @@
 		F1E176751B645F820061C905 /* CarHud */ = {
 			isa = PBXGroup;
 			children = (
+				DC89D2AA1B81FFAB00C89C5E /* Core */,
 				F1E176981B64DFCE0061C905 /* Views */,
 				F1B9B2841B656AC200856A00 /* Controllers */,
 				F1E176781B645F820061C905 /* AppDelegate.swift */,
@@ -296,11 +346,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1B9B2931B656D8B00856A00 /* CHFuelDisplayController.swift in Sources */,
+				DC89D2B11B82007700C89C5E /* CHLookAhead.swift in Sources */,
 				F1E176791B645F820061C905 /* AppDelegate.swift in Sources */,
+				DC89D2B91B82064100C89C5E /* CHOBD2Connector.swift in Sources */,
+				DC89D2B51B82031000C89C5E /* CHOBD2Parser.swift in Sources */,
+				DC89D2B31B8200D600C89C5E /* CHScanner.swift in Sources */,
 				F1B9B2861B656AF700856A00 /* CHSecondaryDisplayController.swift in Sources */,
 				F1E1769C1B64E0120061C905 /* CHGaugeView.swift in Sources */,
 				F1B9B2961B65703900856A00 /* CHSecondaryDisplay.swift in Sources */,
+				DC89D2B71B8205C700C89C5E /* CHOBD2ParserRule.swift in Sources */,
 				F1B9B28F1B656D7200856A00 /* CHPowerDisplayController.swift in Sources */,
+				DC89D2BD1B821D4F00C89C5E /* CHOBD2.swift in Sources */,
 				F1B9B28D1B656D5B00856A00 /* CHSpeedLimitDisplayController.swift in Sources */,
 				F1B9B2911B656D7E00856A00 /* CHEngineDisplayController.swift in Sources */,
 			);
