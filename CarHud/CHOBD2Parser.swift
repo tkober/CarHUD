@@ -92,7 +92,7 @@ class CHOBD2Parser: NSObject {
     
     private func ruleForLookAhead(lookAhead: CHLookAhead) -> CHOBD2ParserRule? {
         for rule in self.rules {
-            if rule.pid == lookAhead.asUInt8 {
+            if rule.pid == lookAhead.asInt32 {
                 return rule
             }
         }

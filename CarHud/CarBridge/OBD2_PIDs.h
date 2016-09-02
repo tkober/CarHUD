@@ -12,55 +12,55 @@
 #include <stdlib.h>
 
 // Mode 1 PIDs
-extern const uint8_t PID_ENGINE_LOAD;
-extern const uint8_t PID_COOLANT_TEMP;
-extern const uint8_t PID_SHORT_TERM_FUEL_TRIM_1;
-extern const uint8_t PID_LONG_TERM_FUEL_TRIM_1;
-extern const uint8_t PID_SHORT_TERM_FUEL_TRIM_2;
-extern const uint8_t PID_LONG_TERM_FUEL_TRIM_2;
-extern const uint8_t PID_FUEL_PRESSURE;
-extern const uint8_t PID_uint8_tAKE_MAP;
-extern const uint8_t PID_RPM;
-extern const uint8_t PID_SPEED;
-extern const uint8_t PID_TIMING_ADVANCE;
-extern const uint8_t PID_uint8_tAKE_TEMP;
-extern const uint8_t PID_MAF_FLOW;
-extern const uint8_t PID_THROTTLE;
-extern const uint8_t PID_AUX_INPUT;
-extern const uint8_t PID_RUNTIME;
-extern const uint8_t PID_DISTANCE_WITH_MIL;
-extern const uint8_t PID_COMMANDED_EGR;
-extern const uint8_t PID_EGR_ERROR;
-extern const uint8_t PID_COMMANDED_EVAPORATIVE_PURGE;
-extern const uint8_t PID_FUEL_LEVEL;
-extern const uint8_t PID_WARMS_UPS;
-extern const uint8_t PID_DISTANCE;
-extern const uint8_t PID_EVAP_SYS_VAPOR_PRESSURE;
-extern const uint8_t PID_BAROMETRIC;
-extern const uint8_t PID_CATALYST_TEMP_B1S1;
-extern const uint8_t PID_CATALYST_TEMP_B2S1;
-extern const uint8_t PID_CATALYST_TEMP_B1S2;
-extern const uint8_t PID_CATALYST_TEMP_B2S2;
-extern const uint8_t PID_CONTROL_MODULE_VOLTAGE;
-extern const uint8_t PID_ABSOLUTE_ENGINE_LOAD;
-extern const uint8_t PID_RELATIVE_THROTTLE_POS;
-extern const uint8_t PID_AMBIENT_TEMP;
-extern const uint8_t PID_ABSOLUTE_THROTTLE_POS_B;
-extern const uint8_t PID_ABSOLUTE_THROTTLE_POS_C;
-extern const uint8_t PID_ACC_PEDAL_POS_D;
-extern const uint8_t PID_ACC_PEDAL_POS_E;
-extern const uint8_t PID_ACC_PEDAL_POS_F;
-extern const uint8_t PID_COMMANDED_THROTTLE_ACTUATOR;
-extern const uint8_t PID_TIME_WITH_MIL;
-extern const uint8_t PID_TIME_SINCE_CODES_CLEARED;
-extern const uint8_t PID_ETHANOL_FUEL;
-extern const uint8_t PID_FUEL_RAIL_PRESSURE;
-extern const uint8_t PID_HYBRID_BATTERY_PERCENTAGE;
-extern const uint8_t PID_ENGINE_OIL_TEMP;
-extern const uint8_t PID_FUEL_INJECTION_TIMING;
-extern const uint8_t PID_ENGINE_FUEL_RATE;
-extern const uint8_t PID_ENGINE_TORQUE_DEMANDED;
-extern const uint8_t PID_ENGINE_TORQUE_PERCENTAGE;
-extern const uint8_t PID_ENGINE_REF_TORQUE;
+#define PID_ENGINE_LOAD 0x04
+#define PID_COOLANT_TEMP 0x05
+#define PID_SHORT_TERM_FUEL_TRIM_1 0x06
+#define PID_LONG_TERM_FUEL_TRIM_1 0x07
+#define PID_SHORT_TERM_FUEL_TRIM_2 0x08
+#define PID_LONG_TERM_FUEL_TRIM_2 0x09
+#define PID_FUEL_PRESSURE 0x0A
+#define PID_INTAKE_MAP 0x0B
+#define PID_RPM 0x0C
+#define PID_SPEED 0x0D
+#define PID_TIMING_ADVANCE 0x0E
+#define PID_INTAKE_TEMP 0x0F
+#define PID_MAF_FLOW 0x10
+#define PID_THROTTLE 0x11
+#define PID_AUX_INPUT 0x1E
+#define PID_RUNTIME 0x1F
+#define PID_DISTANCE_WITH_MIL 0x21
+#define PID_COMMANDED_EGR 0x2C
+#define PID_EGR_ERROR 0x2D
+#define PID_COMMANDED_EVAPORATIVE_PURGE 0x2E
+#define PID_FUEL_LEVEL 0x2F
+#define PID_WARMS_UPS 0x30
+#define PID_DISTANCE 0x31
+#define PID_EVAP_SYS_VAPOR_PRESSURE 0x32
+#define PID_BAROMETRIC 0x33
+#define PID_CATALYST_TEMP_B1S1 0x3C
+#define PID_CATALYST_TEMP_B2S1 0x3D
+#define PID_CATALYST_TEMP_B1S2 0x3E
+#define PID_CATALYST_TEMP_B2S2 0x3F
+#define PID_CONTROL_MODULE_VOLTAGE 0x42
+#define PID_ABSOLUTE_ENGINE_LOAD 0x43
+#define PID_RELATIVE_THROTTLE_POS 0x45
+#define PID_AMBIENT_TEMP 0x46
+#define PID_ABSOLUTE_THROTTLE_POS_B 0x47
+#define PID_ABSOLUTE_THROTTLE_POS_C 0x48
+#define PID_ACC_PEDAL_POS_D 0x49
+#define PID_ACC_PEDAL_POS_E 0x4A
+#define PID_ACC_PEDAL_POS_F 0x4B
+#define PID_COMMANDED_THROTTLE_ACTUATOR 0x4C
+#define PID_TIME_WITH_MIL 0x4D
+#define PID_TIME_SINCE_CODES_CLEARED 0x4E
+#define PID_ETHANOL_FUEL 0x52
+#define PID_FUEL_RAIL_PRESSURE 0x59
+#define PID_HYBRID_BATTERY_PERCENTAGE 0x5B
+#define PID_ENGINE_OIL_TEMP 0x5C
+#define PID_FUEL_INJECTION_TIMING 0x5D
+#define PID_ENGINE_FUEL_RATE 0x5E
+#define PID_ENGINE_TORQUE_DEMANDED 0x61
+#define PID_ENGINE_TORQUE_PERCENTAGE 0x62
+#define PID_ENGINE_REF_TORQUE 0x63
 
 #endif

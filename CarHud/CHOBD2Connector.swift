@@ -10,7 +10,7 @@ import Foundation
 import CoreBluetooth
 
 
-typealias CHOBD2_PID = UInt8
+typealias CHOBD2_PID = Int32
 typealias CHValueUpdate = (newValue: NSNumber) -> ();
 
 

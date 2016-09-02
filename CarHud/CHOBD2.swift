@@ -63,7 +63,7 @@ import Foundation
 
 
 struct OBDValue {
-    var pid: UInt8
+    var pid: Int32
     var size: UInt8
 }
 
