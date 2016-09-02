@@ -64,7 +64,7 @@ class CHOBD2ParserRule: NSObject {
     
     func apply(scanner: CHScanner) -> CHOBD2ParserRuleResult {
         var result: CHOBD2ParserRuleResult = (self.pid, nil, nil)
-        if !scanner.nextToken(size: self.valueSize.rawValue) {
+        if !scanner.nextToken(self.valueSize.rawValue) {
             result.error = NSError(domain: CHOBD2ParserRuleErrorDomain, code: CHOBD2ParserRuleError.InsufficientData.rawValue, userInfo: CH_OBD2_PARSING_RULE_ERROR_INSUFFICIENT_DATA_USER_INFO)
             return result
         }

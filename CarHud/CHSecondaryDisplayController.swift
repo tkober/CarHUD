@@ -65,7 +65,7 @@ class CHSecondaryDisplayController: UIPageViewController, UIPageViewControllerDa
     
     
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-        if let controller: AnyObject = pageViewController.viewControllers.first {
+        if let controller: AnyObject = pageViewController.viewControllers!.first {
             return (self.displays as NSArray).indexOfObject(controller)
         }
         return 0
