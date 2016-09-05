@@ -1,5 +1,5 @@
 //
-//  CHOBD2Connector.swift
+//  CarBridgeConnector.swift
 //  CarHud
 //
 //  Created by Thorsten Kober on 17.08.15.
@@ -14,75 +14,12 @@ typealias CHOBD2_PID = Int32
 typealias CHValueUpdate = (newValue: NSNumber) -> ();
 
 
-class CHOBD2Connecor: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
-    
-    
-    // MARK: - Bluetooth
-    // MARK: | Central Manager
-    
-    
-    private lazy var centralManagerQueue: dispatch_queue_t = {
-        return dispatch_queue_create("kober.thorsten.CarHUD.\(NSStringFromClass(self.classForCoder)).centralManagerQueue", nil)
-    }()
-    
-    
-    private lazy var centralManager: CBCentralManager = CBCentralManager(delegate: self, queue: self.centralManagerQueue)
-    
-    
-    // MARK: | Peripheral
-    
-    
-    private var UARTCharacteristic: CBCharacteristic?
-    
-    
-    
-    // MARK: - CBCentralManagerDelegate
-    
-    
-    
-    func centralManagerDidUpdateState(central: CBCentralManager) {
-        // TODO
-    }
-    
-    
-    func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
-        // TODO
-    }
-    
-    
-    func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
-        // TODO
-    }
-    
-    
-    
-    // MARK: - CBPeripheralDelegate
-    
-    
-    
-    func peripheral(peripheral: CBPeripheral, didDiscoverServices error: NSError?) {
-        // TODO
-    }
-    
-    
-    func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?) {
-        // TODO
-    }
-    
-    
-    func peripheral(peripheral: CBPeripheral, didUpdateNotificationStateForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
-        // TODO
-        if let data = characteristic.value {
-            self.updateOBD2ValueWithData(data)
-        }
-    }
-    
-    
+class CHCarBridgeConnector: CHBLEConnector {
     
     // MARK: | OBD2 Value Updates
     
     
-    func updateOBD2ValueWithData(data: NSData) {
+    override func updateOBD2ValuesWithData(data: NSData) {
         let parsedValues = CHOBD2Parser.parseData(data)
         for parsedValue in parsedValues.values {
             if let value = parsedValue.value {
@@ -93,6 +30,14 @@ class CHOBD2Connecor: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     
     func setValue(value: NSNumber, forPID pid: CHOBD2_PID) {
+        
+    }
+    
+    
+    // MARK: | Commands
+    
+    
+    override func executeCommandWithData(data: NSData) {
         
     }
     
