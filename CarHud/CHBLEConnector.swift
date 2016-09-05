@@ -10,9 +10,9 @@ import Foundation
 import CoreBluetooth
 
 
-protocol CHCHBLEConnectorDelegate {
+protocol CHBLEConnectorDelegate {
     
-    func connectorDiscoveredPFD(connector: CHBLEConnector)
+    func connectorDiscoveredOBD2Adapter(connector: CHBLEConnector)
     
     func connectorEstablishedConnection(connector: CHBLEConnector)
     
@@ -25,7 +25,7 @@ protocol CHCHBLEConnectorDelegate {
 class CHBLEConnector: NSObject {
     
     
-    var delegate: CHCHBLEConnectorDelegate?
+    var delegate: CHBLEConnectorDelegate?
     
     
     // MARK: | UUIDs
@@ -35,21 +35,6 @@ class CHBLEConnector: NSObject {
     private let OBD2_CHARACTERISTIC_UUID = CBUUID(string: CAR_BRIDGE_OBD2_CHARACTERISTIC_UUID)
     
     private let COMMAND_CHARACTERISTIC_UUID = CBUUID(string: CAR_BRIDGE_COMMANDS_CHARACTERISTIC_UUID)
-    
-    
-    // MARK: | Shared Instance
-    
-    class var sharedInstance : CHBLEConnector {
-        struct Static {
-            static var onceToken: dispatch_once_t = 0
-            static var instance: CHBLEConnector? = nil
-        }
-        
-        dispatch_once(&Static.onceToken) {
-            Static.instance = CHBLEConnector()
-        }
-        return Static.instance!
-    }
     
     
     // MARK: | Central Manager
@@ -122,10 +107,14 @@ extension CHBLEConnector: CBCentralManagerDelegate {
     
     
     func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
-        central.stopScan()
-        self.delegate?.connectorDiscoveredPFD(self)
-        self.peripheral = peripheral
-        centralManager.connectPeripheral(peripheral, options: nil)
+        if let localDeviceName = advertisementData[CBAdvertisementDataLocalNameKey] {
+            if localDeviceName as! String == LOCAL_DEVICE_NAME {
+                central.stopScan()
+                self.delegate?.connectorDiscoveredOBD2Adapter(self)
+                self.peripheral = peripheral
+                centralManager.connectPeripheral(peripheral, options: nil)
+            }
+        }
     }
     
     
@@ -165,30 +154,30 @@ extension CHBLEConnector: CBPeripheralDelegate {
             return
         }
         for characteristic in service.characteristics! {
-            if characteristic.UUID == CAR_BRIDGE_OBD2_CHARACTERISTIC_UUID {
+            if characteristic.UUID.UUIDString == CAR_BRIDGE_OBD2_CHARACTERISTIC_UUID {
                 self.obd2Characteristic = characteristic
                 peripheral.setNotifyValue(true, forCharacteristic: characteristic)
-                return
             }
-            if characteristic.UUID == CAR_BRIDGE_COMMANDS_CHARACTERISTIC_UUID {
+            if characteristic.UUID.UUIDString == CAR_BRIDGE_COMMANDS_CHARACTERISTIC_UUID {
                 self.commandsCharacteristic = characteristic
                 peripheral.setNotifyValue(true, forCharacteristic: characteristic)
-                return
             }
         }
     }
     
     
     func peripheral(peripheral: CBPeripheral, didUpdateNotificationStateForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
-        self.delegate?.connectorEstablishedConnection(self)
+        if self.commandsCharacteristic.isNotifying && self.obd2Characteristic.isNotifying {
+            self.delegate?.connectorEstablishedConnection(self)
+        }
     }
     
     
     func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
         if let characteristicValue = characteristic.value {
-            if characteristic.UUID == CAR_BRIDGE_OBD2_CHARACTERISTIC_UUID {
+            if characteristic.UUID.UUIDString == CAR_BRIDGE_OBD2_CHARACTERISTIC_UUID {
                 updateOBD2ValuesWithData(characteristicValue)
-            } else if characteristic.UUID == CAR_BRIDGE_COMMANDS_CHARACTERISTIC_UUID {
+            } else if characteristic.UUID.UUIDString == CAR_BRIDGE_COMMANDS_CHARACTERISTIC_UUID {
                 executeCommandWithData(characteristicValue)
             }
         }

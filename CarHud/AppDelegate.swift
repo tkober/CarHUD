@@ -15,7 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        application.idleTimerDisabled = true
+        
+        let startupController = window?.rootViewController as! CHStartupViewController
+        startupController.status = CHStartupStatus.Processing(message: "Discovering BLE connector", color: PROCESSING_COLOR)
+        CHCarBridgeConnector.sharedInstance.delegate = startupController
+        CHCarBridgeConnector.sharedInstance.start()
+        
         return true
     }
 

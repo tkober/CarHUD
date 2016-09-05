@@ -16,6 +16,21 @@ typealias CHValueUpdate = (newValue: NSNumber) -> ();
 
 class CHCarBridgeConnector: CHBLEConnector {
     
+    // MARK: | Shared Instance
+    
+    class var sharedInstance : CHCarBridgeConnector {
+        struct Static {
+            static var onceToken: dispatch_once_t = 0
+            static var instance: CHCarBridgeConnector? = nil
+        }
+        
+        dispatch_once(&Static.onceToken) {
+            Static.instance = CHCarBridgeConnector()
+        }
+        return Static.instance!
+    }
+    
+    
     // MARK: | OBD2 Value Updates
     
     
@@ -38,7 +53,7 @@ class CHCarBridgeConnector: CHBLEConnector {
     
     
     override func executeCommandWithData(data: NSData) {
-        
+        print(data)
     }
     
     

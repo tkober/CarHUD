@@ -14,6 +14,7 @@
 		DC89D2B91B82064100C89C5E /* CHCarBridgeConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89D2B81B82064100C89C5E /* CHCarBridgeConnector.swift */; };
 		DC89D2BD1B821D4F00C89C5E /* CHOBD2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89D2BC1B821D4F00C89C5E /* CHOBD2.swift */; };
 		DCC067851D7DB2A200D5B4B3 /* CHBLEConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC067841D7DB2A200D5B4B3 /* CHBLEConnector.swift */; };
+		DCC0678B1D7DBA5E00D5B4B3 /* CHStartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC0678A1D7DBA5E00D5B4B3 /* CHStartupViewController.swift */; };
 		F1B9B2861B656AF700856A00 /* CHSecondaryDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B9B2851B656AF700856A00 /* CHSecondaryDisplayController.swift */; };
 		F1B9B28D1B656D5B00856A00 /* CHSpeedLimitDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B9B28C1B656D5B00856A00 /* CHSpeedLimitDisplayController.swift */; };
 		F1B9B28F1B656D7200856A00 /* CHPowerDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B9B28E1B656D7200856A00 /* CHPowerDisplayController.swift */; };
@@ -50,6 +51,7 @@
 		DCC067841D7DB2A200D5B4B3 /* CHBLEConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHBLEConnector.swift; sourceTree = "<group>"; };
 		DCC067871D7DB2DC00D5B4B3 /* BLE.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BLE.h; path = CarBridge/BLE.h; sourceTree = "<group>"; };
 		DCC067881D7DB2E900D5B4B3 /* Commands.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Commands.h; path = CarBridge/Commands.h; sourceTree = "<group>"; };
+		DCC0678A1D7DBA5E00D5B4B3 /* CHStartupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHStartupViewController.swift; sourceTree = "<group>"; };
 		F1B9B2851B656AF700856A00 /* CHSecondaryDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHSecondaryDisplayController.swift; sourceTree = "<group>"; };
 		F1B9B28C1B656D5B00856A00 /* CHSpeedLimitDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHSpeedLimitDisplayController.swift; sourceTree = "<group>"; };
 		F1B9B28E1B656D7200856A00 /* CHPowerDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHPowerDisplayController.swift; sourceTree = "<group>"; };
@@ -136,9 +138,18 @@
 			name = BLE;
 			sourceTree = "<group>";
 		};
+		DCC067891D7DBA4F00D5B4B3 /* Startup */ = {
+			isa = PBXGroup;
+			children = (
+				DCC0678A1D7DBA5E00D5B4B3 /* CHStartupViewController.swift */,
+			);
+			name = Startup;
+			sourceTree = "<group>";
+		};
 		F1B9B2841B656AC200856A00 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DCC067891D7DBA4F00D5B4B3 /* Startup */,
 				F1B9B2871B656CC100856A00 /* SecondaryDisplays */,
 			);
 			name = Controllers;
@@ -371,6 +382,7 @@
 				F1E176791B645F820061C905 /* AppDelegate.swift in Sources */,
 				DC89D2B91B82064100C89C5E /* CHCarBridgeConnector.swift in Sources */,
 				DC89D2B51B82031000C89C5E /* CHOBD2Parser.swift in Sources */,
+				DCC0678B1D7DBA5E00D5B4B3 /* CHStartupViewController.swift in Sources */,
 				DC89D2B31B8200D600C89C5E /* CHScanner.swift in Sources */,
 				F1B9B2861B656AF700856A00 /* CHSecondaryDisplayController.swift in Sources */,
 				F1E1769C1B64E0120061C905 /* CHGaugeView.swift in Sources */,

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eFD-3D-4sW">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -640,6 +643,126 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dqt-3k-XPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2189" y="2273"/>
+        </scene>
+        <!--Startup View Controller-->
+        <scene sceneID="ZYU-Pp-MmR">
+            <objects>
+                <viewController id="eFD-3D-4sW" customClass="CHStartupViewController" customModule="CarHud" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vgi-Pn-pfW"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lyj-VP-4gW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="A6h-aN-Ufl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bjr-f0-iRW">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.60067349140000004" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="bEE-Nt-8wR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
+                                <state key="normal" title="Retry">
+                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="bEE-Nt-8wR"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="bEE-Nt-8wR"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="retryButtonPressed:" destination="eFD-3D-4sW" eventType="touchUpInside" id="jnd-cz-iTe"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="wTC-bA-ATo">
+                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discovery" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYo-Pw-9J5">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="6eK-B1-OFo">
+                                        <variation key="heightClass=compact" constant="1"/>
+                                    </constraint>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="6eK-B1-OFo"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="6eK-B1-OFo"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Bjr-f0-iRW" firstAttribute="leading" secondItem="A6h-aN-Ufl" secondAttribute="leadingMargin" id="0JW-7X-OTN"/>
+                            <constraint firstItem="Lyj-VP-4gW" firstAttribute="top" secondItem="Bjr-f0-iRW" secondAttribute="bottom" constant="20" id="80B-u1-SHc"/>
+                            <constraint firstItem="Bjr-f0-iRW" firstAttribute="trailing" secondItem="A6h-aN-Ufl" secondAttribute="trailingMargin" id="9xd-M4-ixo"/>
+                            <constraint firstItem="dYo-Pw-9J5" firstAttribute="centerX" secondItem="wTC-bA-ATo" secondAttribute="centerX" id="Ahm-yM-Yqx"/>
+                            <constraint firstItem="dYo-Pw-9J5" firstAttribute="top" secondItem="wTC-bA-ATo" secondAttribute="bottom" constant="8" id="QtZ-su-y22"/>
+                            <constraint firstItem="wTC-bA-ATo" firstAttribute="centerX" secondItem="A6h-aN-Ufl" secondAttribute="centerX" id="R65-Db-hEy"/>
+                            <constraint firstItem="wTC-bA-ATo" firstAttribute="centerY" secondItem="A6h-aN-Ufl" secondAttribute="centerY" constant="-16" id="Xb1-0z-skZ"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Bjr-f0-iRW"/>
+                                <exclude reference="wTC-bA-ATo"/>
+                                <exclude reference="dYo-Pw-9J5"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="80B-u1-SHc"/>
+                                <exclude reference="R65-Db-hEy"/>
+                                <exclude reference="Xb1-0z-skZ"/>
+                                <exclude reference="0JW-7X-OTN"/>
+                                <exclude reference="9xd-M4-ixo"/>
+                                <exclude reference="Ahm-yM-Yqx"/>
+                                <exclude reference="QtZ-su-y22"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="subviews">
+                                <include reference="Bjr-f0-iRW"/>
+                                <include reference="wTC-bA-ATo"/>
+                                <include reference="dYo-Pw-9J5"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="80B-u1-SHc"/>
+                                <include reference="R65-Db-hEy"/>
+                                <include reference="Xb1-0z-skZ"/>
+                                <include reference="0JW-7X-OTN"/>
+                                <include reference="9xd-M4-ixo"/>
+                                <include reference="Ahm-yM-Yqx"/>
+                                <include reference="QtZ-su-y22"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="wTC-bA-ATo" id="AsL-Ss-eKh"/>
+                        <outlet property="retryButton" destination="Bjr-f0-iRW" id="Vzr-44-aDv"/>
+                        <outlet property="statusLabel" destination="dYo-Pw-9J5" id="wU4-mx-ujB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KgY-8C-ZYg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-594" y="337"/>
         </scene>
     </scenes>
 </document>

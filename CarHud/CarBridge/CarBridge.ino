@@ -1,13 +1,3 @@
-#include <BLEAttribute.h>
-#include <BLECentral.h>
-#include <BLECharacteristic.h>
-#include <BLECommon.h>
-#include <BLEDescriptor.h>
-#include <BLEPeripheral.h>
-#include <BLEService.h>
-#include <BLETypedCharacteristic.h>
-#include <BLETypedCharacteristics.h>
-#include <BLEUuid.h>
 #include <CurieBLE.h>
 
 #include "OBD2_PIDs.h"
@@ -38,8 +28,9 @@ void setup() {
   controlKnob.setOnClick(knob_press);
 
   // Setup BLE Peripheral
-  blePeripheral.setLocalName("CarBridge");
+  blePeripheral.setLocalName(LOCAL_DEVICE_NAME);
   blePeripheral.setAdvertisedServiceUuid(carBridgeService.uuid());  
+  blePeripheral.addAttribute(carBridgeService);
   blePeripheral.addAttribute(obd2Characteristic);   
   blePeripheral.addAttribute(commandsCharacteristic);
   blePeripheral.begin();
