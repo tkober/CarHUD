@@ -10,6 +10,16 @@ import Foundation
 import CoreBluetooth
 
 
+protocol CHCommandReceiver {
+    
+    func left()
+    func right()
+    func press()
+    func longPress()
+    
+}
+
+
 typealias CHOBD2_PID = Int32
 typealias CHValueUpdate = (newValue: NSNumber) -> ();
 
@@ -53,9 +63,32 @@ class CHCarBridgeConnector: CHBLEConnector {
     
     // MARK: | Commands
     
+    var commandReceiver: CHCommandReceiver?
+    
     
     override func executeCommandWithData(data: NSData) {
-        print(data)
+        let command = Int32(data.asUInt8)
+        switch command {
+            
+        case LEFT:
+            commandReceiver?.left()
+            break
+            
+        case RIGHT:
+            commandReceiver?.right()
+            break
+            
+        case PRESS:
+            commandReceiver?.press()
+            break
+            
+        case LONG_PRESS:
+            commandReceiver?.longPress()
+            break
+            
+        default:
+            return
+        }
     }
     
     

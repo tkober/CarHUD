@@ -36,7 +36,7 @@ class CHGaugeViewController: UIViewController, CHGaugeViewDelegate {
         
         for view in self.view.subviews {
             if view != titleLabel && view != gauge {
-                view.alpha = 0
+                view.hidden = true
             }
         }
         
@@ -55,7 +55,7 @@ class CHGaugeViewController: UIViewController, CHGaugeViewDelegate {
         }) { (finished: Bool) in
             for view in self.view.subviews {
                 if view != self.titleLabel && view != gauge {
-                    view.alpha = 1
+                    view.hidden = false
                 }
             }
         }

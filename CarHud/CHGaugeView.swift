@@ -46,7 +46,7 @@ protocol CHGaugeViewDelegate {
     // MARK: | Unit Text
     // e.g. rpm, %...
     
-    @IBInspectable var unitAreaSize: CGFloat = 0.21 {
+    @IBInspectable var unitAreaSize: CGFloat = 0.23 {
         didSet {
             self.setNeedsDisplay()
         }
@@ -139,6 +139,16 @@ protocol CHGaugeViewDelegate {
     }
     
     
+    // MARK: | Selection
+    
+    
+    @IBInspectable var isSelected: Bool = false {
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
+    
+    
     // MARK: | Views Lifecylce
     
     override func awakeFromNib() {
@@ -151,17 +161,29 @@ protocol CHGaugeViewDelegate {
         
         let size = min(rect.height, rect.width * (1-unitAreaSize))
         
-        let context = UIGraphicsGetCurrentContext();
-        CGContextSetLineWidth(context, size*scaleSize);
-        CGContextSetStrokeColorWithColor(context, scaleColor.CGColor);
+        let context = UIGraphicsGetCurrentContext()
+        CGContextSetLineWidth(context, size*scaleSize)
+        CGContextSetStrokeColorWithColor(context, scaleColor.CGColor)
+        CGContextSetFillColorWithColor(context, scaleColor.colorWithAlphaComponent(0.2).CGColor)
         
         let center = CGPointMake(size/2.0, size/2.0);
         let from = self.degreesToRadians(215);
         let to = self.degreesToRadians(115);
         let radius = (size / 2.0) - (size*indicatorSize + size*scaleSize);
         
-        CGContextAddArc(context, center.x, center.y, radius, from, to, 0);
-        CGContextStrokePath(context);
+        CGContextAddArc(context, center.x, center.y, radius, from, from, 0)
+        let arcBegin = CGContextGetPathCurrentPoint(context)
+        CGContextAddArc(context, center.x, center.y, radius, from, to, 0)
+        if (isSelected) {
+            CGContextAddLineToPoint(context, size + size*unitAreaSize + size*valueTextMargin, CGContextGetPathCurrentPoint(context).y)
+            CGContextAddLineToPoint(context, size + size*unitAreaSize + size*valueTextMargin, size)
+            CGContextAddLineToPoint(context, size, CGContextGetPathCurrentPoint(context).y)
+            CGContextAddLineToPoint(context, size, size)
+            CGContextAddLineToPoint(context, arcBegin.x, size)
+            CGContextDrawPath(context, CGPathDrawingMode.Fill)
+        } else {
+            CGContextDrawPath(context, CGPathDrawingMode.Stroke)
+        }
         
         CGContextSetLineWidth(context, size*indicatorSize);
         CGContextSetStrokeColorWithColor(context, indicatorColor.CGColor);
