@@ -9,6 +9,7 @@
 import UIKit
 
 
+@IBDesignable
 class CHGaugeView: UIView {
     
     

@@ -110,7 +110,7 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="f4d-Qt-wOT" customClass="CHSecondaryDisplayController" customModule="CarHud" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EDJ-Vt-Syk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1605.5" y="875"/>
+            <point key="canvasLocation" x="992.5" y="337"/>
         </scene>
         <!--Power Display Controller-->
         <scene sceneID="iPI-xT-rBV">
@@ -228,7 +228,7 @@
                                             <constraint firstAttribute="height" constant="17" id="aNQ-ji-kRs"/>
                                             <constraint firstAttribute="width" constant="25" id="q04-l4-hct"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -260,7 +260,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ItU-CU-djG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2189" y="875"/>
+            <point key="canvasLocation" x="1576" y="337"/>
         </scene>
         <!--Fuel Display Controller-->
         <scene sceneID="bb4-35-qYi">
@@ -352,7 +352,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ku-dI-c0f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2189" y="1565"/>
+            <point key="canvasLocation" x="1576" y="1027"/>
         </scene>
         <!--Engine Display Controller-->
         <scene sceneID="Mpp-8a-jq5">
@@ -642,7 +642,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dqt-3k-XPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2189" y="2273"/>
+            <point key="canvasLocation" x="1576" y="1735"/>
         </scene>
         <!--Startup View Controller-->
         <scene sceneID="ZYU-Pp-MmR">
