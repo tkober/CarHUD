@@ -171,7 +171,6 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
                                         <real key="value" value="16383.75"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSelected" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="tapDelegate" destination="bhg-Vc-oez" id="bZa-38-R5R"/>
@@ -378,6 +377,8 @@ Temp</string>
                                     <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
                                         <real key="value" value="765"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="unitText" value="kPa"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSelected" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="tapDelegate" destination="YB2-gw-Djl" id="ZWA-eq-EdN"/>
