@@ -35,8 +35,10 @@ class CHCarBridgeConnector: CHBLEConnector {
     
     
     override func updateOBD2ValuesWithData(data: NSData) {
+        print(data)
         let parsedValues = CHOBD2Parser.parseData(data)
         for parsedValue in parsedValues.values {
+            print(parsedValue)
             if let value = parsedValue.value {
                 self.setValue(value, forPID: parsedValue.pid)
             }
