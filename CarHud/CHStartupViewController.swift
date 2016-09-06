@@ -27,7 +27,7 @@ let SUCCESS_COLOR = UIColor.greenColor()
 let ERROR_COLOR = UIColor.redColor()
 
 
-private let PFD_CONTROLLER_STORYBOARD_ID = "pfdController"
+private let HUD_CONTROLLER_STORYBOARD_ID = "hudController"
 
 
 
@@ -92,15 +92,10 @@ class CHStartupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateUI()
-        
-        // TODO: DEBUG Only
-        //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) {
-        //            self.presentViewController(self.pfdController, animated: true, completion: nil)
-        //        }
     }
     
     
-//    lazy var pfdController: PFDViewController = self.storyboard?.instantiateViewControllerWithIdentifier(PFD_CONTROLLER_STORYBOARD_ID) as! PFDViewController
+    lazy var hudController: CHHudViewController = self.storyboard?.instantiateViewControllerWithIdentifier(HUD_CONTROLLER_STORYBOARD_ID) as! CHHudViewController
 }
 
 
@@ -116,7 +111,7 @@ extension CHStartupViewController: CHBLEConnectorDelegate {
     func connectorEstablishedConnection(connector: CHBLEConnector) {
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             self.status = CHStartupStatus.Success(message: "Connection established")
-//            self.presentViewController(self.pfdController, animated: true, completion: nil)
+            self.presentViewController(self.hudController, animated: true, completion: nil)
         }
     }
     
@@ -130,7 +125,7 @@ extension CHStartupViewController: CHBLEConnectorDelegate {
     
     func connectorLostConnection(connector: CHBLEConnector) {
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
-//            self.pfdController.dismissViewControllerAnimated(true, completion: nil)
+            self.hudController.dismissViewControllerAnimated(true, completion: nil)
             self.status = CHStartupStatus.Processing(message: "Lost connection,\nreconnecting", color: ERROR_COLOR)
         }
     }
