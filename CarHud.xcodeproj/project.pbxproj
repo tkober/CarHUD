@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC7A80511D7EEF9E00A089B9 /* CHGaugeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7A80501D7EEF9E00A089B9 /* CHGaugeViewController.swift */; };
 		DC89D2B11B82007700C89C5E /* CHLookAhead.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89D2B01B82007700C89C5E /* CHLookAhead.swift */; };
 		DC89D2B31B8200D600C89C5E /* CHScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89D2B21B8200D600C89C5E /* CHScanner.swift */; };
 		DC89D2B51B82031000C89C5E /* CHOBD2Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89D2B41B82031000C89C5E /* CHOBD2Parser.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DC7A80501D7EEF9E00A089B9 /* CHGaugeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHGaugeViewController.swift; sourceTree = "<group>"; };
 		DC89D2B01B82007700C89C5E /* CHLookAhead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHLookAhead.swift; sourceTree = "<group>"; };
 		DC89D2B21B8200D600C89C5E /* CHScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHScanner.swift; sourceTree = "<group>"; };
 		DC89D2B41B82031000C89C5E /* CHOBD2Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHOBD2Parser.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				F1B9B2951B65703900856A00 /* CHSecondaryDisplay.swift */,
+				DC7A80501D7EEF9E00A089B9 /* CHGaugeViewController.swift */,
 				F1B9B28B1B656D2700856A00 /* SpeedLimitDisplay */,
 				F1B9B28A1B656CE100856A00 /* PowerDisplay */,
 				F1B9B2891B656CDE00856A00 /* EngineDisplay */,
@@ -387,6 +390,7 @@
 				F1B9B2861B656AF700856A00 /* CHSecondaryDisplayController.swift in Sources */,
 				F1E1769C1B64E0120061C905 /* CHGaugeView.swift in Sources */,
 				DCC067851D7DB2A200D5B4B3 /* CHBLEConnector.swift in Sources */,
+				DC7A80511D7EEF9E00A089B9 /* CHGaugeViewController.swift in Sources */,
 				F1B9B2961B65703900856A00 /* CHSecondaryDisplay.swift in Sources */,
 				DC89D2B71B8205C700C89C5E /* CHOBD2ParserRule.swift in Sources */,
 				F1B9B28F1B656D7200856A00 /* CHPowerDisplayController.swift in Sources */,

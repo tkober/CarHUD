@@ -113,7 +113,7 @@
             </objects>
             <point key="canvasLocation" x="992.5" y="337"/>
         </scene>
-        <!--Power Display Controller-->
+        <!--Tap Delegate-->
         <scene sceneID="iPI-xT-rBV">
             <objects>
                 <viewController storyboardIdentifier="Power" id="bhg-Vc-oez" customClass="CHPowerDisplayController" customModule="CarHud" customModuleProvider="target" sceneMemberID="viewController">
@@ -138,8 +138,8 @@
                                 <rect key="frame" x="224" y="59" width="153" height="120"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="TK4-nk-uKM"/>
-                                    <constraint firstAttribute="width" constant="153" id="YbL-2J-vOl"/>
+                                    <constraint firstAttribute="height" priority="750" constant="120" id="TK4-nk-uKM"/>
+                                    <constraint firstAttribute="width" priority="750" constant="153" id="YbL-2J-vOl"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="descriptionText" value="Throttle"/>
@@ -151,13 +151,16 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="string" keyPath="unitText" value="%"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="tapDelegate" destination="bhg-Vc-oez" id="Bqg-Z4-fRR"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rkf-Cf-ZRg" customClass="CHGaugeView" customModule="CarHud" customModuleProvider="target">
                                 <rect key="frame" x="224" y="187" width="153" height="120"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="2uP-5f-XUe"/>
-                                    <constraint firstAttribute="width" constant="153" id="CZj-8i-YMa"/>
+                                    <constraint firstAttribute="height" priority="750" constant="120" id="2uP-5f-XUe"/>
+                                    <constraint firstAttribute="width" priority="750" constant="153" id="CZj-8i-YMa"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="descriptionText" value="Engine"/>
@@ -169,25 +172,31 @@
                                         <real key="value" value="16383.75"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="tapDelegate" destination="bhg-Vc-oez" id="bZa-38-R5R"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="UFq-J3-ELP" firstAttribute="leading" secondItem="jQf-fq-q49" secondAttribute="leading" id="4ju-lG-oNe"/>
                             <constraint firstItem="UFq-J3-ELP" firstAttribute="top" secondItem="Y9e-0w-Lal" secondAttribute="bottom" constant="8" id="JCr-Bo-rfI"/>
-                            <constraint firstItem="uaq-ds-KYV" firstAttribute="centerX" secondItem="jQf-fq-q49" secondAttribute="centerX" id="ScP-aQ-WVG"/>
-                            <constraint firstItem="Rkf-Cf-ZRg" firstAttribute="top" secondItem="uaq-ds-KYV" secondAttribute="bottom" constant="8" id="kZs-my-Yu1"/>
-                            <constraint firstItem="Rkf-Cf-ZRg" firstAttribute="centerX" secondItem="jQf-fq-q49" secondAttribute="centerX" id="rno-gH-y5V"/>
-                            <constraint firstItem="uaq-ds-KYV" firstAttribute="top" secondItem="UFq-J3-ELP" secondAttribute="bottom" constant="8" id="tr6-95-fEJ"/>
+                            <constraint firstItem="uaq-ds-KYV" firstAttribute="centerX" secondItem="jQf-fq-q49" secondAttribute="centerX" priority="750" id="ScP-aQ-WVG"/>
+                            <constraint firstItem="Rkf-Cf-ZRg" firstAttribute="top" secondItem="uaq-ds-KYV" secondAttribute="bottom" priority="750" constant="8" id="kZs-my-Yu1"/>
+                            <constraint firstItem="Rkf-Cf-ZRg" firstAttribute="centerX" secondItem="jQf-fq-q49" secondAttribute="centerX" priority="750" id="rno-gH-y5V"/>
+                            <constraint firstItem="uaq-ds-KYV" firstAttribute="top" secondItem="UFq-J3-ELP" secondAttribute="bottom" priority="750" constant="8" id="tr6-95-fEJ"/>
                             <constraint firstAttribute="trailing" secondItem="UFq-J3-ELP" secondAttribute="trailing" id="udU-vC-jDm"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="titleLabel" destination="UFq-J3-ELP" id="tRN-Ha-CZB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ItU-CU-djG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1576" y="337"/>
         </scene>
-        <!--Fuel Display Controller-->
+        <!--Tap Delegate-->
         <scene sceneID="bb4-35-qYi">
             <objects>
                 <viewController storyboardIdentifier="Fuel" id="pUU-Ie-IWr" customClass="CHFuelDisplayController" customModule="CarHud" customModuleProvider="target" sceneMemberID="viewController">
@@ -212,8 +221,8 @@
                                 <rect key="frame" x="471" y="59" width="113" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="113" id="AvU-c8-Rbi"/>
-                                    <constraint firstAttribute="height" constant="80" id="Zi4-Wx-TMm"/>
+                                    <constraint firstAttribute="width" priority="750" constant="113" id="AvU-c8-Rbi"/>
+                                    <constraint firstAttribute="height" priority="750" constant="80" id="Zi4-Wx-TMm"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="unitText" value="L/h"/>
@@ -228,13 +237,16 @@ rate</string>
                                         <real key="value" value="3276.75"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="tapDelegate" destination="pUU-Ie-IWr" id="9s2-vx-6Kn"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qlu-g1-CEH" customClass="CHGaugeView" customModule="CarHud" customModuleProvider="target">
                                 <rect key="frame" x="16" y="59" width="113" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="113" id="9ix-aU-U8t"/>
-                                    <constraint firstAttribute="height" constant="80" id="IFk-iD-JXd"/>
+                                    <constraint firstAttribute="width" priority="750" constant="113" id="9ix-aU-U8t"/>
+                                    <constraint firstAttribute="height" priority="750" constant="80" id="IFk-iD-JXd"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="descriptionText">
@@ -250,25 +262,31 @@ level</string>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="showDecimals" value="NO"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="tapDelegate" destination="pUU-Ie-IWr" id="kol-kb-poM"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="qlu-g1-CEH" firstAttribute="leading" secondItem="MaT-nJ-cMj" secondAttribute="leading" constant="16" id="309-9P-7G5"/>
-                            <constraint firstItem="sUf-jd-Unw" firstAttribute="top" secondItem="Cn4-EZ-hwo" secondAttribute="bottom" constant="8" id="Gqr-GO-7PD"/>
+                            <constraint firstItem="qlu-g1-CEH" firstAttribute="leading" secondItem="MaT-nJ-cMj" secondAttribute="leading" priority="750" constant="16" id="309-9P-7G5"/>
+                            <constraint firstItem="sUf-jd-Unw" firstAttribute="top" secondItem="Cn4-EZ-hwo" secondAttribute="bottom" priority="750" constant="8" id="Gqr-GO-7PD"/>
                             <constraint firstItem="Cn4-EZ-hwo" firstAttribute="top" secondItem="hod-pb-1rw" secondAttribute="bottom" constant="8" id="bGa-uj-ZZJ"/>
                             <constraint firstAttribute="trailing" secondItem="Cn4-EZ-hwo" secondAttribute="trailing" id="gO2-De-wdU"/>
                             <constraint firstItem="Cn4-EZ-hwo" firstAttribute="leading" secondItem="MaT-nJ-cMj" secondAttribute="leading" id="kkC-nD-Hsl"/>
-                            <constraint firstAttribute="trailing" secondItem="sUf-jd-Unw" secondAttribute="trailing" constant="16" id="sKt-2h-t65"/>
-                            <constraint firstItem="qlu-g1-CEH" firstAttribute="top" secondItem="Cn4-EZ-hwo" secondAttribute="bottom" constant="8" id="wi1-xV-mWy"/>
+                            <constraint firstAttribute="trailing" secondItem="sUf-jd-Unw" secondAttribute="trailing" priority="750" constant="16" id="sKt-2h-t65"/>
+                            <constraint firstItem="qlu-g1-CEH" firstAttribute="top" secondItem="Cn4-EZ-hwo" secondAttribute="bottom" priority="750" constant="8" id="wi1-xV-mWy"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="titleLabel" destination="Cn4-EZ-hwo" id="jdF-7p-4Ns"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ku-dI-c0f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1576" y="1027"/>
         </scene>
-        <!--Engine Display Controller-->
+        <!--Tap Delegate-->
         <scene sceneID="Mpp-8a-jq5">
             <objects>
                 <viewController storyboardIdentifier="Engine" id="YB2-gw-Djl" customClass="CHEngineDisplayController" customModule="CarHud" customModuleProvider="target" sceneMemberID="viewController">
@@ -293,8 +311,8 @@ level</string>
                                 <rect key="frame" x="471" y="59" width="113" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="z9k-xC-IQC"/>
-                                    <constraint firstAttribute="width" constant="113" id="zeG-1X-feu"/>
+                                    <constraint firstAttribute="height" priority="750" constant="80" id="z9k-xC-IQC"/>
+                                    <constraint firstAttribute="width" priority="750" constant="113" id="zeG-1X-feu"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="unitText" value="°C"/>
@@ -303,13 +321,16 @@ level</string>
 Temp</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="tapDelegate" destination="YB2-gw-Djl" id="5Je-SV-onf"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F06-lj-yL6" customClass="CHGaugeView" customModule="CarHud" customModuleProvider="target">
                                 <rect key="frame" x="16" y="59" width="113" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="113" id="617-kw-N2x"/>
-                                    <constraint firstAttribute="height" constant="80" id="eoN-9h-4je"/>
+                                    <constraint firstAttribute="width" priority="750" constant="113" id="617-kw-N2x"/>
+                                    <constraint firstAttribute="height" priority="750" constant="80" id="eoN-9h-4je"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="descriptionText" value="load"/>
@@ -322,25 +343,31 @@ Temp</string>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="showDecimals" value="NO"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="tapDelegate" destination="YB2-gw-Djl" id="9Fc-Yb-XIv"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jpx-NG-eqG" customClass="CHGaugeView" customModule="CarHud" customModuleProvider="target">
                                 <rect key="frame" x="16" y="147" width="113" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="113" id="37J-uG-nf1"/>
-                                    <constraint firstAttribute="height" constant="80" id="EWM-zl-TvB"/>
+                                    <constraint firstAttribute="width" priority="750" constant="113" id="37J-uG-nf1"/>
+                                    <constraint firstAttribute="height" priority="750" constant="80" id="EWM-zl-TvB"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="descriptionText" value="OIL TEMP"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="unitText" value="°C"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="tapDelegate" destination="YB2-gw-Djl" id="rYw-0S-oHD"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sgO-ue-LS4" customClass="CHGaugeView" customModule="CarHud" customModuleProvider="target">
                                 <rect key="frame" x="471" y="147" width="113" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="113" id="1dU-EO-BGv"/>
-                                    <constraint firstAttribute="height" constant="80" id="4NX-G1-YeA"/>
+                                    <constraint firstAttribute="width" priority="750" constant="113" id="1dU-EO-BGv"/>
+                                    <constraint firstAttribute="height" priority="750" constant="80" id="4NX-G1-YeA"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="descriptionText" value="FUEL PRESSURE"/>
@@ -351,6 +378,9 @@ Temp</string>
                                         <real key="value" value="765"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="tapDelegate" destination="YB2-gw-Djl" id="ZWA-eq-EdN"/>
+                                </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RUNTIME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OHH-xW-7AD">
                                 <rect key="frame" x="16" y="577" width="568" height="15"/>
@@ -377,21 +407,24 @@ Temp</string>
                             <constraint firstAttribute="trailing" secondItem="MQ6-cU-OZz" secondAttribute="trailing" constant="16" id="6Y7-X2-4Ud"/>
                             <constraint firstItem="MQ6-cU-OZz" firstAttribute="leading" secondItem="Zkg-xc-Lyi" secondAttribute="leading" constant="16" id="6aT-zA-eH6"/>
                             <constraint firstItem="OHH-xW-7AD" firstAttribute="leading" secondItem="Zkg-xc-Lyi" secondAttribute="leading" constant="16" id="9Ne-Qv-89w"/>
-                            <constraint firstItem="sgO-ue-LS4" firstAttribute="top" secondItem="8go-aC-F80" secondAttribute="bottom" constant="8" id="GCq-hX-jhY"/>
+                            <constraint firstItem="sgO-ue-LS4" firstAttribute="top" secondItem="8go-aC-F80" secondAttribute="bottom" priority="750" constant="8" id="GCq-hX-jhY"/>
                             <constraint firstItem="OHH-xW-7AD" firstAttribute="top" secondItem="MQ6-cU-OZz" secondAttribute="bottom" id="Him-t7-UPk"/>
-                            <constraint firstItem="jpx-NG-eqG" firstAttribute="top" secondItem="F06-lj-yL6" secondAttribute="bottom" constant="8" id="LK9-JN-rjD"/>
-                            <constraint firstAttribute="trailing" secondItem="sgO-ue-LS4" secondAttribute="trailing" constant="16" id="RMB-fx-2nh"/>
+                            <constraint firstItem="jpx-NG-eqG" firstAttribute="top" secondItem="F06-lj-yL6" secondAttribute="bottom" priority="750" constant="8" id="LK9-JN-rjD"/>
+                            <constraint firstAttribute="trailing" secondItem="sgO-ue-LS4" secondAttribute="trailing" priority="750" constant="16" id="RMB-fx-2nh"/>
                             <constraint firstItem="tfb-Hq-rnm" firstAttribute="top" secondItem="OHH-xW-7AD" secondAttribute="bottom" constant="8" id="a61-V1-0BE"/>
-                            <constraint firstAttribute="trailing" secondItem="8go-aC-F80" secondAttribute="trailing" constant="16" id="apD-xg-QRx"/>
-                            <constraint firstItem="F06-lj-yL6" firstAttribute="leading" secondItem="Zkg-xc-Lyi" secondAttribute="leading" constant="16" id="eHf-f8-kGY"/>
+                            <constraint firstAttribute="trailing" secondItem="8go-aC-F80" secondAttribute="trailing" priority="750" constant="16" id="apD-xg-QRx"/>
+                            <constraint firstItem="F06-lj-yL6" firstAttribute="leading" secondItem="Zkg-xc-Lyi" secondAttribute="leading" priority="750" constant="16" id="eHf-f8-kGY"/>
                             <constraint firstAttribute="trailing" secondItem="OHH-xW-7AD" secondAttribute="trailing" constant="16" id="fJU-pW-3Rd"/>
-                            <constraint firstItem="jpx-NG-eqG" firstAttribute="leading" secondItem="Zkg-xc-Lyi" secondAttribute="leading" constant="16" id="nu9-pk-1Cv"/>
-                            <constraint firstItem="8go-aC-F80" firstAttribute="top" secondItem="iXm-WK-0RH" secondAttribute="bottom" constant="8" id="vwK-0o-Flb"/>
+                            <constraint firstItem="jpx-NG-eqG" firstAttribute="leading" secondItem="Zkg-xc-Lyi" secondAttribute="leading" priority="750" constant="16" id="nu9-pk-1Cv"/>
+                            <constraint firstItem="8go-aC-F80" firstAttribute="top" secondItem="iXm-WK-0RH" secondAttribute="bottom" priority="750" constant="8" id="vwK-0o-Flb"/>
                             <constraint firstItem="iXm-WK-0RH" firstAttribute="top" secondItem="q9X-Wi-Iko" secondAttribute="bottom" constant="8" id="zCz-QG-Hu8"/>
-                            <constraint firstItem="F06-lj-yL6" firstAttribute="top" secondItem="iXm-WK-0RH" secondAttribute="bottom" constant="8" id="zg8-vD-P4b"/>
+                            <constraint firstItem="F06-lj-yL6" firstAttribute="top" secondItem="iXm-WK-0RH" secondAttribute="bottom" priority="750" constant="8" id="zg8-vD-P4b"/>
                             <constraint firstAttribute="trailing" secondItem="iXm-WK-0RH" secondAttribute="trailing" id="zvX-4Z-1G6"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="titleLabel" destination="iXm-WK-0RH" id="CNL-bB-u6M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dqt-3k-XPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

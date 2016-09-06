@@ -9,7 +9,7 @@
 import UIKit
 
 
-class CHEngineDisplayController: UIViewController, CHSecondaryDisplay {
+class CHEngineDisplayController: CHGaugeViewController, CHSecondaryDisplay {
     
     
     // MARK: - Private

@@ -9,7 +9,16 @@
 import UIKit
 
 
+protocol CHGaugeViewDelegate {
+    
+    func gaugeTapped(gauge: CHGaugeView)
+    
+}
+
+
 @IBDesignable class CHGaugeView: UIView {
+    
+    @IBOutlet var tapDelegate: CHGaugeViewController?
     
     
     // MARK: | Description Text
@@ -132,6 +141,11 @@ import UIKit
     
     // MARK: | Views Lifecylce
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(gaugeTapped)))
+    }
+    
     override func drawRect(rect: CGRect) {
         super.drawRect(rect);
         
@@ -158,6 +172,7 @@ import UIKit
         drawUnitText(size)
         drawValue(size)
     }
+    
     
     private func drawDescriptionText(gaugeSize: CGFloat) {
         let text = descriptionText.uppercaseString
@@ -199,6 +214,11 @@ import UIKit
         let checkedDegrees = (degrees + 270) % 360;
         let result = (2.0 * M_PI * checkedDegrees) / 360.0;
         return CGFloat(result);
+    }
+    
+    
+    func gaugeTapped() {
+        self.tapDelegate?.gaugeTapped(self)
     }
     
 }

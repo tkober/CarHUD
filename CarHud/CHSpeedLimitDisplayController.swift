@@ -9,7 +9,7 @@
 import UIKit
 
 
-class CHSpeedLimitDisplayController: UIViewController, CHSecondaryDisplay {
+class CHSpeedLimitDisplayController: CHGaugeViewController, CHSecondaryDisplay {
     
     
     // MARK: - Private
