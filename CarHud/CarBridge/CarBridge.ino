@@ -1,10 +1,9 @@
 #include <CurieBLE.h>
+#include <Wire.h>
 
 #include "OBD2_PIDs.h"
 #include "Commands.h"
 #include "Pins.h"
-#include "Button.h"
-#include "RotaryEncoder.h"
 #include "BLE.h"
 #include "Structures.h"
 
@@ -51,24 +50,12 @@ BLEService carBridgeService = BLEService(CAR_BRIDGE_SERVICE_UUID);
 BLECharacteristic obd2Characteristic = BLECharacteristic(CAR_BRIDGE_OBD2_CHARACTERISTIC_UUID, BLERead | BLENotify, BT_MESSAGE_SIZE);
 BLECharacteristic commandsCharacteristic = BLECharacteristic(CAR_BRIDGE_COMMANDS_CHARACTERISTIC_UUID, BLERead | BLENotify, BT_MESSAGE_SIZE);
 
-PushableRotaryEncoder controlKnob = PushableRotaryEncoder(CONTROL_KNOB_ENCODER_PIN_A, CONTROL_KNOB_ENCODER_PIN_B, CONTROL_KNOB_BUTTON_PIN, 1);
-
-void knob_left(int boost);
-void knob_right(int boost);
-void knob_press();
-void send_command(const unsigned char command);
-
 void reset_message(uint8_t *message, int size);
 int copy_obd_values_to_message(OBDValue *obd_values, int index, OBDValue *last_obd_value, uint8_t **message, uint8_t *message_bound);
 int read_obd_value(OBDValue value, int *result);
 void send_message(uint8_t *message, int size);
 
 void setup() {
-  // Setting up control knob
-  controlKnob.setOnRotateClockwise(knob_right);
-  controlKnob.setOnRotateCounterClockwise(knob_left);
-  controlKnob.setOnClick(knob_press);
-
   // Setup BLE Peripheral
   blePeripheral.setLocalName(LOCAL_DEVICE_NAME);
   blePeripheral.setAdvertisedServiceUuid(carBridgeService.uuid());  
@@ -76,6 +63,8 @@ void setup() {
   blePeripheral.addAttribute(obd2Characteristic);   
   blePeripheral.addAttribute(commandsCharacteristic);
   blePeripheral.begin();
+
+  Wire.begin();
 }
 
 void loop() {
@@ -88,8 +77,13 @@ void loop() {
     digitalWrite(ON_BOARD_LED, HIGH);
     
     while(central.connected()) {
-      controlKnob.tick();
+      /*Wire.requestFrom(8, 6);    // request 6 bytes from slave device #8
 
+      while (Wire.available()) { // slave may send less than requested
+        char c = Wire.read(); // receive a byte as character
+        Serial.print(c);         // print the character
+      }*/
+      
       uint8_t *message = message_memory;
       int status = copy_obd_values_to_message((OBDValue *)PRIMARY_OBD_VALUES, 0, (OBDValue *)LAST_PRIMARY_OBD_VALUE, &message, message+BT_MESSAGE_BORDER);
       if (status > 0) {
@@ -105,27 +99,6 @@ void loop() {
     digitalWrite(ON_BOARD_LED, LOW);
   }
 }
-
-
-// Commands
-
-void knob_left(int boost) {
-  send_command(LEFT);
-}
-
-void knob_right(int boost) {
-  send_command(RIGHT);
-}
-
-void knob_press() {
-  send_command(PRESS);
-}
-
-void send_command(const unsigned char command) {
-  const unsigned char value[] = { command };
-  commandsCharacteristic.setValue(value, 1);
-}
-
 
 // OBD2
 
