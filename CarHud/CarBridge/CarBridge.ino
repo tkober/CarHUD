@@ -6,6 +6,7 @@
 #include "Pins.h"
 #include "BLE.h"
 #include "Structures.h"
+#include "Colors.h"
 
 #define BT_MESSAGE_SIZE     20
 #define BT_MESSAGE_BORDER   BT_MESSAGE_SIZE-1
@@ -55,6 +56,8 @@ int copy_obd_values_to_message(OBDValue *obd_values, int index, OBDValue *last_o
 int read_obd_value(OBDValue value, int *result);
 void send_message(uint8_t *message, int size);
 
+void set_status_led(COLOR color);
+
 void setup() {
   // Setup BLE Peripheral
   blePeripheral.setLocalName(LOCAL_DEVICE_NAME);
@@ -64,17 +67,22 @@ void setup() {
   blePeripheral.addAttribute(commandsCharacteristic);
   blePeripheral.begin();
 
-  Wire.begin();
+  //Wire.begin();
+
+  pinMode(STATUS_LED_R, OUTPUT);
+  pinMode(STATUS_LED_G, OUTPUT);
+  pinMode(STATUS_LED_B, OUTPUT);
 }
 
 void loop() {
   uint8_t message_memory[BT_MESSAGE_SIZE];
   reset_message(message_memory, BT_MESSAGE_SIZE);
   int OBD_VALUE_INDEX = 0;
+  set_status_led(RED);
   
   BLECentral central = blePeripheral.central();
   if (central) {
-    digitalWrite(ON_BOARD_LED, HIGH);
+    set_status_led(GREEN);
     
     while(central.connected()) {
       /*Wire.requestFrom(8, 6);    // request 6 bytes from slave device #8
@@ -95,8 +103,6 @@ void loop() {
       send_message(message_memory, BT_MESSAGE_SIZE);
       reset_message(message_memory, BT_MESSAGE_SIZE);
     }
-
-    digitalWrite(ON_BOARD_LED, LOW);
   }
 }
 
@@ -142,6 +148,12 @@ int read_obd_value(OBDValue value, int *result) {
 
 void send_message(uint8_t *message, int size) {
   obd2Characteristic.setValue(message, size);
+}
+
+void set_status_led(COLOR color) {
+  analogWrite(STATUS_LED_R, color.r * 4);
+  analogWrite(STATUS_LED_G, color.g * 4);
+  analogWrite(STATUS_LED_B, color.b * 4);
 }
 
 
