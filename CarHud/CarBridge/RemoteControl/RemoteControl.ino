@@ -26,6 +26,7 @@ void setup() {
 
   Wire.begin(I2C_ADDRESS);
   Wire.onRequest(requestEvent);
+  pinMode(13, OUTPUT);
 }
 
 void loop() {

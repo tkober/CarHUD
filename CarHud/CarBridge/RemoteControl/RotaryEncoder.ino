@@ -1,6 +1,5 @@
 #include "RotaryEncoder.h"
 
-
 #define LATCHSTATE                          3
 #define DEFAULT_DEBOUNCE_FILTER             200
 #define DEFAULT_BOOST_ACTIVATION_COUNT      15
@@ -23,6 +22,8 @@ PushableRotaryEncoder::PushableRotaryEncoder(int rotaryPinA, int rotaryPinB, int
   _button = Button(buttonPin, pullUp);
   pinMode(rotaryPinA, pullUp == 1 ? INPUT_PULLUP : INPUT);
   pinMode(rotaryPinB, pullUp == 1 ? INPUT_PULLUP : INPUT);
+  debouncerA.attach(rotaryPinA);
+  debouncerB.attach(rotaryPinB);
 
   _oldState = 3;
   _lastTime = millis();
@@ -71,9 +72,11 @@ void PushableRotaryEncoder::setBoostActivationInterval(int boostActivationInterv
 
 void PushableRotaryEncoder::tick() {
   _button.tick();
+  debouncerA.update();
+  debouncerB.update();
 
-  int sigA = digitalRead(_rotaryPinA);
-  int sigB = digitalRead(_rotaryPinB);
+  int sigA = debouncerA.read();
+  int sigB = debouncerB.read();
   int8_t thisState = sigA | (sigB << 1);
 
   if (_oldState != thisState) {

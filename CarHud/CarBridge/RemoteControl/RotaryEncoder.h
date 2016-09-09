@@ -1,6 +1,7 @@
 #ifndef ROTARY_ENCODER_H
 #define ROTARY_ENCODER_H
 
+#include "Bounce2.h"
 
 enum DirectionState {
   Stopped,
@@ -35,6 +36,8 @@ class PushableRotaryEncoder {
     int _buttonPin;
     int _pullUp;
     Button _button = Button(_buttonPin, _pullUp);
+    Bounce  debouncerA  = Bounce(); 
+    Bounce  debouncerB  = Bounce(); 
 
     int _oldState;
     unsigned long _lastTime;
