@@ -2,7 +2,7 @@
 #include <Wire.h>
 
 #include "OBD2_PIDs.h"
-#include "Commands.h"
+#include "RemoteControl/Commands.h"
 #include "Pins.h"
 #include "BLE.h"
 #include "Structures.h"
@@ -56,6 +56,8 @@ int copy_obd_values_to_message(OBDValue *obd_values, int index, OBDValue *last_o
 int read_obd_value(OBDValue value, int *result);
 void send_message(uint8_t *message, int size);
 
+void send_command(uint8_t command);
+
 void set_status_led(COLOR color);
 
 void setup() {
@@ -67,11 +69,13 @@ void setup() {
   blePeripheral.addAttribute(commandsCharacteristic);
   blePeripheral.begin();
 
-  //Wire.begin();
+  Wire.begin();
 
   pinMode(STATUS_LED_R, OUTPUT);
   pinMode(STATUS_LED_G, OUTPUT);
   pinMode(STATUS_LED_B, OUTPUT);
+
+  Serial.begin(9600);
 }
 
 void loop() {
@@ -85,12 +89,11 @@ void loop() {
     set_status_led(GREEN);
     
     while(central.connected()) {
-      /*Wire.requestFrom(8, 6);    // request 6 bytes from slave device #8
-
-      while (Wire.available()) { // slave may send less than requested
-        char c = Wire.read(); // receive a byte as character
-        Serial.print(c);         // print the character
-      }*/
+      Wire.requestFrom(0x0F, 1); 
+      uint8_t command = Wire.read();
+      if (command != EMPTY_COMMAND) {
+        send_command(command);
+      }
       
       uint8_t *message = message_memory;
       int status = copy_obd_values_to_message((OBDValue *)PRIMARY_OBD_VALUES, 0, (OBDValue *)LAST_PRIMARY_OBD_VALUE, &message, message+BT_MESSAGE_BORDER);
@@ -148,6 +151,11 @@ int read_obd_value(OBDValue value, int *result) {
 
 void send_message(uint8_t *message, int size) {
   obd2Characteristic.setValue(message, size);
+}
+
+void send_command(uint8_t command) {
+  const unsigned char value[] = { command };
+  commandsCharacteristic.setValue(value, 1);
 }
 
 void set_status_led(COLOR color) {

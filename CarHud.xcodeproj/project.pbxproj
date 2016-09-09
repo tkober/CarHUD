@@ -56,7 +56,7 @@
 		DCA254BD1D7A21290000D308 /* OBD2_PIDs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OBD2_PIDs.h; path = CarBridge/OBD2_PIDs.h; sourceTree = "<group>"; };
 		DCC067841D7DB2A200D5B4B3 /* CHBLEConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHBLEConnector.swift; sourceTree = "<group>"; };
 		DCC067871D7DB2DC00D5B4B3 /* BLE.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BLE.h; path = CarBridge/BLE.h; sourceTree = "<group>"; };
-		DCC067881D7DB2E900D5B4B3 /* Commands.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Commands.h; path = CarBridge/Commands.h; sourceTree = "<group>"; };
+		DCC067881D7DB2E900D5B4B3 /* Commands.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Commands.h; path = CarBridge/RemoteControl/Commands.h; sourceTree = "<group>"; };
 		DCC0678A1D7DBA5E00D5B4B3 /* CHStartupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHStartupViewController.swift; sourceTree = "<group>"; };
 		F1B9B2851B656AF700856A00 /* CHSecondaryDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHSecondaryDisplayController.swift; sourceTree = "<group>"; };
 		F1B9B28C1B656D5B00856A00 /* CHSpeedLimitDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHSpeedLimitDisplayController.swift; sourceTree = "<group>"; };

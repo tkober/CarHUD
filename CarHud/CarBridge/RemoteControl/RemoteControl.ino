@@ -6,11 +6,10 @@
 #include "RotaryEncoder.h"
 
 #define I2C_ADDRESS   0x0F
-#define EMPTY_COMMAND 0x00
 
 PushableRotaryEncoder controlKnob = PushableRotaryEncoder(CONTROL_KNOB_ENCODER_PIN_A, CONTROL_KNOB_ENCODER_PIN_B, CONTROL_KNOB_BUTTON_PIN, 1);
 
-unsigned char currentCommand = 0x00;
+unsigned char currentCommand = EMPTY_COMMAND;
 
 void knob_left(int boost);
 void knob_right(int boost);
@@ -35,7 +34,7 @@ void loop() {
 
 void requestEvent() {
   if (currentCommand != EMPTY_COMMAND) {
-    Wire.write(currentCommand); 
+    Wire.write(currentCommand);
     currentCommand = EMPTY_COMMAND;
   }
 }

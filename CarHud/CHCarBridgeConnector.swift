@@ -69,14 +69,17 @@ class CHCarBridgeConnector: CHBLEConnector {
         switch command {
             
         case LEFT:
+            print("left")
             commandReceiver?.left()
             break
             
         case RIGHT:
+            print("right")
             commandReceiver?.right()
             break
             
         case PRESS:
+            print("press")
             commandReceiver?.press()
             break
             
