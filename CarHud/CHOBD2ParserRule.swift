@@ -91,10 +91,10 @@ class CHOBD2ParserRule: NSObject {
             return NSNumber(unsignedChar: value.asUInt8)
             
         case .U_INT_16:
-            return NSNumber(unsignedShort: UInt16(bigEndian:value.asUInt16))
+            return NSNumber(unsignedShort: value.asUInt16)
             
         case .U_INT_32:
-            return NSNumber(unsignedInt: UInt32(bigEndian: value.asUInt32))
+            return NSNumber(unsignedInt: value.asUInt32)
         }
     }
 }

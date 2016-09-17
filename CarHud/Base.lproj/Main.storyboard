@@ -61,10 +61,10 @@
             </objects>
             <point key="canvasLocation" x="152" y="337"/>
         </scene>
-        <!--View Controller-->
+        <!--Primary Display View Controller-->
         <scene sceneID="Lro-48-zJb">
             <objects>
-                <viewController id="aUW-kv-6Wg" sceneMemberID="viewController">
+                <viewController id="aUW-kv-6Wg" customClass="CHPrimaryDisplayViewController" customModule="CarHud" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GdU-HC-wuH"/>
                         <viewControllerLayoutGuide type="bottom" id="9Ol-A2-SXg"/>
@@ -73,8 +73,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="300" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SPEED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmI-Yn-HDn">
-                                <rect key="frame" x="0.0" y="28" width="300" height="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SPEED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmI-Yn-HDn">
+                                <rect key="frame" x="0.0" y="8" width="300" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="flB-bB-a0l"/>
                                 </constraints>
@@ -82,8 +82,8 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="255" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJn-M3-dtZ">
-                                <rect key="frame" x="45" y="59" width="245" height="130"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJn-M3-dtZ">
+                                <rect key="frame" x="45" y="39" width="245" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="UcC-8b-W5m"/>
                                     <constraint firstAttribute="width" constant="245" id="u9N-R1-KF9"/>
@@ -92,8 +92,8 @@
                                 <color key="textColor" red="0.0" green="0.64731233639999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="km/h" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOx-Im-Myt">
-                                <rect key="frame" x="8" y="197" width="284" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="km/h" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOx-Im-Myt">
+                                <rect key="frame" x="8" y="177" width="284" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="5y6-qR-cBv"/>
                                 </constraints>
@@ -101,8 +101,8 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oYh-AK-2rn">
-                                <rect key="frame" x="8" y="59" width="29" height="130"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oYh-AK-2rn">
+                                <rect key="frame" x="8" y="39" width="29" height="130"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -122,15 +122,18 @@
                             <constraint firstItem="kmI-Yn-HDn" firstAttribute="leading" secondItem="DTf-Lz-jtq" secondAttribute="leading" id="y4a-fE-cLa"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="speedLabel" destination="eJn-M3-dtZ" id="q7l-9Z-nGl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o9x-2C-der" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="152" y="1119"/>
         </scene>
-        <!--Secondary Display Controller-->
+        <!--Secondary Displays Controller-->
         <scene sceneID="SMi-An-CLr">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="f4d-Qt-wOT" customClass="CHSecondaryDisplayController" customModule="CarHud" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="f4d-Qt-wOT" customClass="CHSecondaryDisplaysController" customModule="CarHud" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EDJ-Vt-Syk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="992.5" y="337"/>
@@ -172,6 +175,10 @@
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="string" keyPath="unitText" value="%"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showDecimals" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="tapDelegate" destination="bhg-Vc-oez" id="Bqg-Z4-fRR"/>
@@ -193,6 +200,10 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
                                         <real key="value" value="16383.75"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showDecimals" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="tapDelegate" destination="bhg-Vc-oez" id="bZa-38-R5R"/>
@@ -211,6 +222,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="engineGauge" destination="Rkf-Cf-ZRg" id="nlv-nV-3Kr"/>
+                        <outlet property="throttleGauge" destination="uaq-ds-KYV" id="FBw-Pd-o8O"/>
                         <outlet property="titleLabel" destination="UFq-J3-ELP" id="tRN-Ha-CZB"/>
                     </connections>
                 </viewController>

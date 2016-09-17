@@ -1,12 +1,11 @@
 #include "Button.h"
 
-
-#define DEFAULT_CLICK_TICKS  600
+#define DEFAULT_LONG_PRESS_CLICK_TICKS    1000
 
 
 Button::Button(int pin, int pullUp) {
   _pin = pin;
-  _clickTicks = DEFAULT_CLICK_TICKS;
+  _longPressClickTicks = DEFAULT_LONG_PRESS_CLICK_TICKS;
   _isPullUp = pullUp;
   pinMode(pin, pullUp == 1 ? INPUT_PULLUP : INPUT);
 }
@@ -18,9 +17,14 @@ void Button::setOnClick(ButtonEventHandler handler)
 }
 
 
-void Button::setClickTicks(int clickTicks)
+void Button::setOnLongPress(ButtonEventHandler handler) 
 {
-  _clickTicks = clickTicks;
+  _onLongPress = handler;
+}
+
+void Button::setLongPressClickTicks(unsigned int ticks)
+{
+  _longPressClickTicks = ticks;
 }
 
 
@@ -36,18 +40,25 @@ void Button::tick()
         break;
     
       case ClickStarted:
-        if (_startedTime - now >= _clickTicks) {
-          _state = Clicked;
-          if (_onClick != NULL) {
-            _onClick();
+        if (now - _startedTime >= _longPressClickTicks) {
+          _state = LongPressed;
+          if (_onLongPress != NULL) {
+            _onLongPress();
           }
         }
         break;
-    
-      case Clicked:
+
+      case LongPressed:
         break;
      } 
   } else {
+    switch (_state) {
+      case ClickStarted:
+        if (_onClick != NULL) {
+          _onClick();
+        }
+      break;
+    }
    _state =  Normal;
   }
 }

@@ -14,6 +14,7 @@ unsigned char currentCommand = EMPTY_COMMAND;
 void knob_left(int boost);
 void knob_right(int boost);
 void knob_press();
+void knob_long_press();
 void send_command(const unsigned char command);
 
 
@@ -22,6 +23,7 @@ void setup() {
   controlKnob.setOnRotateClockwise(knob_right);
   controlKnob.setOnRotateCounterClockwise(knob_left);
   controlKnob.setOnClick(knob_press);
+  controlKnob.setOnLongPress(knob_long_press);
 
   Wire.begin(I2C_ADDRESS);
   Wire.onRequest(requestEvent);
@@ -52,6 +54,10 @@ void knob_right(int boost) {
 
 void knob_press() {
   send_command(PRESS);
+}
+
+void knob_long_press() {
+  send_command(LONG_PRESS);
 }
 
 void send_command(const unsigned char command) {

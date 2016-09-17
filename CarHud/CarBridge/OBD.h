@@ -215,7 +215,7 @@ public:
 	void setQueryPID(byte pid, byte obdPid[]);
 	void applyQueryPIDs(byte obdPid[]);
 	void loadQueryData(PID_INFO obdInfo[]);
+ byte receive(char* buffer, byte bufsize, int timeout = OBD_TIMEOUT_SHORT);
 protected:
-	byte receive(char* buffer, byte bufsize, int timeout = OBD_TIMEOUT_SHORT);
 	bool sendCommandBlock(byte cmd, uint8_t data = 0, byte* payload = 0, byte payloadBytes = 0);
 };

@@ -110,8 +110,31 @@ extension CHStartupViewController: CHBLEConnectorDelegate {
     
     func connectorEstablishedConnection(connector: CHBLEConnector) {
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            self.status = CHStartupStatus.Success(message: "Connection established")
+            self.status = CHStartupStatus.Processing(message: "Authenticating", color: SUCCESS_COLOR)
+            
+        }
+    }
+    
+    
+    func connectorAuthenticationSuccessful(connector: CHBLEConnector) {
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            self.status = CHStartupStatus.Processing(message: "Starting OBD2-Module", color: SUCCESS_COLOR)
+            
+        }
+    }
+    
+    
+    func connectorServiceStarted(connector: CHBLEConnector) {
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            self.status = CHStartupStatus.Success(message: "OBD2-Module started")
             self.presentViewController(self.hudController, animated: true, completion: nil)
+        }
+    }
+    
+    
+    func connectorServiceStopped(connector: CHBLEConnector) {
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            print("connectorServiceStopped()")
         }
     }
     

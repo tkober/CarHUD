@@ -16,7 +16,7 @@ protocol CHGaugeViewDelegate {
 }
 
 
-@IBDesignable class CHGaugeView: UIView {
+@IBDesignable class CHGaugeView: UIView, CHSelectableView {
     
     @IBOutlet var tapDelegate: CHGaugeViewController?
     
@@ -162,32 +162,23 @@ protocol CHGaugeViewDelegate {
         let size = min(rect.height, rect.width * (1-unitAreaSize))
         
         let context = UIGraphicsGetCurrentContext()
+        let scaleSize = isSelected ? self.scaleSize * 4 : self.scaleSize
         CGContextSetLineWidth(context, size*scaleSize)
-        CGContextSetStrokeColorWithColor(context, scaleColor.CGColor)
-        CGContextSetFillColorWithColor(context, scaleColor.colorWithAlphaComponent(0.2).CGColor)
+        CGContextSetStrokeColorWithColor(context, isSelected ? UIColor.whiteColor().CGColor : scaleColor.CGColor)
         
         let center = CGPointMake(size/2.0, size/2.0);
-        let from = self.degreesToRadians(215);
-        let to = self.degreesToRadians(115);
+        let from = 215.0;
+        let to = 115.0;
+        let range = (360.0 - from) + to;
         let radius = (size / 2.0) - (size*indicatorSize + size*scaleSize);
         
-        CGContextAddArc(context, center.x, center.y, radius, from, from, 0)
-        let arcBegin = CGContextGetPathCurrentPoint(context)
-        CGContextAddArc(context, center.x, center.y, radius, from, to, 0)
-        if (isSelected) {
-            CGContextAddLineToPoint(context, size + size*unitAreaSize + size*valueTextMargin, CGContextGetPathCurrentPoint(context).y)
-            CGContextAddLineToPoint(context, size + size*unitAreaSize + size*valueTextMargin, size)
-            CGContextAddLineToPoint(context, size, CGContextGetPathCurrentPoint(context).y)
-            CGContextAddLineToPoint(context, size, size)
-            CGContextAddLineToPoint(context, arcBegin.x, size)
-            CGContextDrawPath(context, CGPathDrawingMode.Fill)
-        } else {
-            CGContextDrawPath(context, CGPathDrawingMode.Stroke)
-        }
+        CGContextAddArc(context, center.x, center.y, radius, degreesToRadians(from), degreesToRadians(to), 0)
+        CGContextDrawPath(context, CGPathDrawingMode.Stroke)
         
         CGContextSetLineWidth(context, size*indicatorSize);
         CGContextSetStrokeColorWithColor(context, indicatorColor.CGColor);
-        CGContextAddArc(context, center.x, center.y, radius+(size*indicatorSize / 2.0), from, self.degreesToRadians(330), 0);
+        let valueToDegrees = (from + ((self.value / self.maxValue) * range)) % 360.0
+        CGContextAddArc(context, center.x, center.y, radius+(size*indicatorSize / (isSelected ? 1.0 : 2.0)), degreesToRadians(from), degreesToRadians(valueToDegrees), 0);
         CGContextStrokePath(context);
         
         drawDescriptionText(size)
@@ -243,4 +234,18 @@ protocol CHGaugeViewDelegate {
         self.tapDelegate?.gaugeTapped(self)
     }
     
+    
+    // MARK: - CHSelectableView
+    
+    func select() {
+        self.isSelected = true
+    }
+    
+    func deselect() {
+        self.isSelected = false
+    }
+    
+    func engage() {
+        gaugeTapped()
+    }
 }

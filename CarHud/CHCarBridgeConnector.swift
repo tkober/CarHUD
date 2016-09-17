@@ -55,7 +55,26 @@ class CHCarBridgeConnector: CHBLEConnector {
     
     
     func setValue(value: NSNumber, forPID pid: CHOBD2_PID) {
-        
+        let blockSelf = self
+        dispatch_async(dispatch_get_main_queue()) { 
+            switch pid {
+                
+            case PID_SPEED:
+                blockSelf._speed = value
+                break
+                
+            case PID_RPM:
+                blockSelf._rpm = value
+                break
+                
+            case PID_THROTTLE:
+                blockSelf._throttle = value
+                break
+                
+            default:
+                return
+            }
+        }
     }
     
     
@@ -65,30 +84,30 @@ class CHCarBridgeConnector: CHBLEConnector {
     
     
     override func executeCommandWithData(data: NSData) {
-        let command = Int32(data.asUInt8)
-        switch command {
-            
-        case LEFT:
-            print("left")
-            commandReceiver?.left()
-            break
-            
-        case RIGHT:
-            print("right")
-            commandReceiver?.right()
-            break
-            
-        case PRESS:
-            print("press")
-            commandReceiver?.press()
-            break
-            
-        case LONG_PRESS:
-            commandReceiver?.longPress()
-            break
-            
-        default:
-            return
+        let blockSelf = self
+        dispatch_async(dispatch_get_main_queue()) { 
+            let command = Int32(data.asUInt8)
+            switch command {
+                
+            case LEFT:
+                blockSelf.commandReceiver?.left()
+                break
+                
+            case RIGHT:
+                blockSelf.commandReceiver?.right()
+                break
+                
+            case PRESS:
+                blockSelf.commandReceiver?.press()
+                break
+                
+            case LONG_PRESS:
+                blockSelf.commandReceiver?.longPress()
+                break
+                
+            default:
+                return
+            }
         }
     }
     

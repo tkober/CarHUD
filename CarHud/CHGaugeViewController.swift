@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CHGaugeViewController: UIViewController, CHGaugeViewDelegate {
+class CHGaugeViewController: CHSecondaryDisplayViewController, CHGaugeViewDelegate {
     
     @IBOutlet weak var titleLabel: UILabel?
     

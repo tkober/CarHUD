@@ -9,5 +9,14 @@
 import UIKit
 
 class CHPrimaryDisplayViewController: UIViewController {
+    
+    @IBOutlet weak var speedLabel: UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        CHCarBridgeConnector.sharedInstance.onSpeedUpdate = { (newValue: NSNumber) -> () in
+            self.speedLabel.text = newValue.stringValue
+        }
+    }
 
 }

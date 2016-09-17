@@ -50,8 +50,13 @@ void PushableRotaryEncoder::setOnClick(ButtonEventHandler handler) {
 }
 
 
-void PushableRotaryEncoder::setClickTicks(int clickTicks) {
-  _button.setClickTicks(clickTicks);
+void PushableRotaryEncoder::setOnLongPress(ButtonEventHandler handler) {
+  _button.setOnLongPress(handler);
+}
+
+
+void PushableRotaryEncoder::setLongPressClickTicks(unsigned int ticks) {
+  _button.setLongPressClickTicks(ticks);
 }
 
 

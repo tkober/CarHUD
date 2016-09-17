@@ -16,6 +16,12 @@ protocol CHBLEConnectorDelegate {
     
     func connectorEstablishedConnection(connector: CHBLEConnector)
     
+    func connectorAuthenticationSuccessful(connector: CHBLEConnector)
+    
+    func connectorServiceStarted(connector: CHBLEConnector)
+    
+    func connectorServiceStopped(connector: CHBLEConnector)
+    
     func connectorFailedConnecting(connector: CHBLEConnector)
     
     func connectorLostConnection(connector: CHBLEConnector)
@@ -35,6 +41,10 @@ class CHBLEConnector: NSObject {
     private let OBD2_CHARACTERISTIC_UUID = CBUUID(string: CAR_BRIDGE_OBD2_CHARACTERISTIC_UUID)
     
     private let COMMAND_CHARACTERISTIC_UUID = CBUUID(string: CAR_BRIDGE_COMMANDS_CHARACTERISTIC_UUID)
+    
+    private let PASSWORD_CHARACTERISTIC_UUID = CBUUID(string: CAR_BRIDGE_PASSWORD_CHARACTERISTIC_UUID)
+    
+    private let STATUS_CHARACTERISTIC_UUID = CBUUID(string: CAR_BRIDGE_STATUS_CHARACTERISTIC_UUID)
     
     
     // MARK: | Central Manager
@@ -64,6 +74,10 @@ class CHBLEConnector: NSObject {
     var obd2Characteristic: CBCharacteristic!
     
     var commandsCharacteristic: CBCharacteristic!
+    
+    var passwordCharacteristic: CBCharacteristic!
+    
+    var statusCharacteristic: CBCharacteristic!
     
     func updateOBD2ValuesWithData(data: NSData) {
         preconditionFailure("Must be overridden in concrete subclass")
@@ -162,13 +176,31 @@ extension CHBLEConnector: CBPeripheralDelegate {
                 self.commandsCharacteristic = characteristic
                 peripheral.setNotifyValue(true, forCharacteristic: characteristic)
             }
+            if characteristic.UUID.UUIDString == CAR_BRIDGE_PASSWORD_CHARACTERISTIC_UUID {
+                self.passwordCharacteristic = characteristic
+                peripheral.setNotifyValue(true, forCharacteristic: characteristic)
+            }
+            if characteristic.UUID.UUIDString == CAR_BRIDGE_STATUS_CHARACTERISTIC_UUID {
+                self.statusCharacteristic = characteristic
+                peripheral.setNotifyValue(true, forCharacteristic: characteristic)
+            }
         }
     }
     
     
     func peripheral(peripheral: CBPeripheral, didUpdateNotificationStateForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
-        if self.commandsCharacteristic.isNotifying && self.obd2Characteristic.isNotifying {
-            self.delegate?.connectorEstablishedConnection(self)
+        if let commands = self.commandsCharacteristic,
+            obd2 = self.obd2Characteristic,
+            password = self.passwordCharacteristic,
+            status = self.statusCharacteristic {
+            
+            if commands.isNotifying &&
+                obd2.isNotifying &&
+                password.isNotifying &&
+                status.isNotifying {
+                self.delegate?.connectorEstablishedConnection(self)
+                peripheral.writeValue(DEVICE_PASSWORD.dataUsingEncoding(NSUTF8StringEncoding)!, forCharacteristic: self.passwordCharacteristic, type: CBCharacteristicWriteType.WithResponse)
+            }
         }
     }
     
@@ -179,6 +211,26 @@ extension CHBLEConnector: CBPeripheralDelegate {
                 updateOBD2ValuesWithData(characteristicValue)
             } else if characteristic.UUID.UUIDString == CAR_BRIDGE_COMMANDS_CHARACTERISTIC_UUID {
                 executeCommandWithData(characteristicValue)
+            } else if characteristic.UUID.UUIDString == CAR_BRIDGE_PASSWORD_CHARACTERISTIC_UUID {
+                let result = NSNumber(unsignedChar: characteristic.value!.asUInt8)
+                if result.boolValue {
+                    self.delegate?.connectorAuthenticationSuccessful(self)
+                }
+            } else if characteristic.UUID.UUIDString == CAR_BRIDGE_STATUS_CHARACTERISTIC_UUID {
+                switch Int32(characteristic.value!.asUInt8) {
+                    
+                case STATUS_SERVICE_STARTED:
+                    self.delegate?.connectorServiceStarted(self)
+                    break
+                    
+                case STATUS_SERVICE_STOPPED:
+                    self.delegate?.connectorServiceStopped(self)
+                    break;
+                    
+                default:
+                    break;
+                    
+                }
             }
         }
     }

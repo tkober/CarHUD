@@ -7,7 +7,7 @@ typedef void (*ButtonEventHandler)();
 typedef enum {
   Normal  = 0,
   ClickStarted,
-  Clicked
+  LongPressed
 } ButtonState;
 
 
@@ -17,7 +17,9 @@ class Button {
     Button(int pin, int pullUp);
   
     void setOnClick(ButtonEventHandler handler);
-    void setClickTicks(int clickTicks);
+    void setOnLongPress(ButtonEventHandler handler);
+  
+    void setLongPressClickTicks(unsigned int ticks);
     
     void tick();
   
@@ -25,10 +27,11 @@ class Button {
     int _pin;
     int _isPullUp;
     ButtonState _state;
-    
-    unsigned int _clickTicks;
+  
+    unsigned int _longPressClickTicks;
     
     ButtonEventHandler _onClick;
+    ButtonEventHandler _onLongPress;
     
     unsigned long _startedTime;
 };
