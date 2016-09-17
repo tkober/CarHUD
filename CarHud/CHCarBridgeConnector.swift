@@ -179,108 +179,30 @@ class CHCarBridgeConnector: CHBLEConnector {
     internal var onCoolantTempUpdate: CHValueUpdate?
     
     
-    // MARK: | Fuel Pressure
+    // MARK: | Intake Temp
     
     
-    internal var fuelPressure: NSNumber? {
+    internal var intakeTemp: NSNumber? {
         get {
-            return self._fuelPressure
+            return self._intakeTemp
         }
     }
     
     
-    internal var onFuelPressureUpdate: CHValueUpdate?
+    internal var onIntakeTempUpdate: CHValueUpdate?
     
     
-    // MARK: | Runtime
+    // MARK: | Intake MAP
     
     
-    internal var runtime: NSNumber? {
+    internal var intakeMAP: NSNumber? {
         get {
-            return self._runtime
+            return self._intakeMAP
         }
     }
     
     
-    internal var onRuntimeUpdate: CHValueUpdate?
-    
-    
-    // MARK: | Fuel Rate
-    
-    
-    internal var fuelLevel: NSNumber? {
-        get {
-            return self._fuelLevel
-        }
-    }
-    
-    
-    internal var onFuelLevelUpdate: CHValueUpdate?
-    
-    
-    // MARK: | Distance
-    
-    
-    internal var distance: NSNumber? {
-        get {
-            return self._distance
-        }
-    }
-    
-    
-    internal var onDistanceUpdate: CHValueUpdate?
-    
-    
-    // MARK: | Control Module Voltage
-    
-    
-    internal var controlModuleVoltage: NSNumber? {
-        get {
-            return self._controlModuleVoltage
-        }
-    }
-    
-    
-    internal var onControlModuleVoltageUpdate: CHValueUpdate?
-    
-    
-    // MARK: | Ambient Temp
-    
-    
-    internal var ambientTemp: NSNumber? {
-        get {
-            return self._ambientTemp
-        }
-    }
-    
-    
-    internal var onAmbientTempUpdate: CHValueUpdate?
-    
-    
-    // MARK: | Eninge Oil Temp
-    
-    
-    internal var engineOilTemp: NSNumber? {
-        get {
-            return self._engineOilTemp
-        }
-    }
-    
-    
-    internal var onEngineOilTempUpdate: CHValueUpdate?
-    
-    
-    // MARK: | Engine Fuel Rate
-    
-    
-    internal var engineFuelRate: NSNumber? {
-        get {
-            return self._engineFuelRate
-        }
-    }
-    
-    
-    internal var onEngineFuelRateUpdate: CHValueUpdate?
+    internal var onIntakeMAPUpdate: CHValueUpdate?
     
     
     
@@ -333,73 +255,19 @@ class CHCarBridgeConnector: CHBLEConnector {
     }
     
     
-    private var _fuelPressure: NSNumber? {
+    private var _intakeTemp: NSNumber? {
         didSet {
-            if let update = self.onFuelPressureUpdate {
-                update(newValue: self.fuelPressure!)
+            if let update = self.onIntakeTempUpdate {
+                update(newValue: self.intakeTemp!)
             }
         }
     }
     
     
-    private var _runtime: NSNumber? {
+    private var _intakeMAP: NSNumber? {
         didSet {
-            if let update = self.onRuntimeUpdate {
-                update(newValue: self.runtime!)
-            }
-        }
-    }
-    
-    
-    private var _fuelLevel: NSNumber? {
-        didSet {
-            if let update = self.onFuelLevelUpdate {
-                update(newValue: self.fuelLevel!)
-            }
-        }
-    }
-    
-    
-    private var _distance: NSNumber? {
-        didSet {
-            if let update = self.onDistanceUpdate {
-                update(newValue: self.distance!)
-            }
-        }
-    }
-    
-    
-    private var _controlModuleVoltage: NSNumber? {
-        didSet {
-            if let update = self.onControlModuleVoltageUpdate {
-                update(newValue: self.controlModuleVoltage!)
-            }
-        }
-    }
-    
-    
-    private var _ambientTemp: NSNumber? {
-        didSet {
-            if let update = self.onAmbientTempUpdate {
-                update(newValue: self.ambientTemp!)
-            }
-        }
-    }
-    
-    
-    private var _engineOilTemp: NSNumber? {
-        didSet {
-            if let update = self.onEngineOilTempUpdate {
-                update(newValue: self.engineOilTemp!)
-            }
-        }
-    }
-    
-    
-    private var _engineFuelRate: NSNumber? {
-        didSet {
-            if let update = self.onEngineFuelRateUpdate {
-                update(newValue: self.engineFuelRate!)
+            if let update = self.onIntakeMAPUpdate {
+                update(newValue: self.intakeMAP!)
             }
         }
     }

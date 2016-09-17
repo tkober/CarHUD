@@ -177,7 +177,9 @@ protocol CHGaugeViewDelegate {
         
         CGContextSetLineWidth(context, size*indicatorSize);
         CGContextSetStrokeColorWithColor(context, indicatorColor.CGColor);
-        let valueToDegrees = (from + ((self.value / self.maxValue) * range)) % 360.0
+        
+        let relativeValue = (self.value + abs(self.minValue)) / abs(self.minValue - self.maxValue)
+        let valueToDegrees = (from + (relativeValue * range)) % 360.0
         CGContextAddArc(context, center.x, center.y, radius+(size*indicatorSize / (isSelected ? 1.0 : 2.0)), degreesToRadians(from), degreesToRadians(valueToDegrees), 0);
         CGContextStrokePath(context);
         

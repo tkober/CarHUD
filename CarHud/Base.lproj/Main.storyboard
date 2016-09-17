@@ -232,96 +232,6 @@
             <point key="canvasLocation" x="1576" y="337"/>
         </scene>
         <!--Tap Delegate-->
-        <scene sceneID="bb4-35-qYi">
-            <objects>
-                <viewController storyboardIdentifier="Fuel" id="pUU-Ie-IWr" customClass="CHFuelDisplayController" customModule="CarHud" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="hod-pb-1rw"/>
-                        <viewControllerLayoutGuide type="bottom" id="Oyw-Vn-Xq6"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="MaT-nJ-cMj">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FUEL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cn4-EZ-hwo">
-                                <rect key="frame" x="0.0" y="28" width="600" height="23"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="23" id="WhL-OS-SMi"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sUf-jd-Unw" customClass="CHGaugeView" customModule="CarHud" customModuleProvider="target">
-                                <rect key="frame" x="471" y="59" width="113" height="80"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" priority="750" constant="113" id="AvU-c8-Rbi"/>
-                                    <constraint firstAttribute="height" priority="750" constant="80" id="Zi4-Wx-TMm"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="unitText" value="L/h"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="descriptionText">
-                                        <string key="value">fuel
-rate</string>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
-                                        <real key="value" value="3276.75"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outlet property="tapDelegate" destination="pUU-Ie-IWr" id="9s2-vx-6Kn"/>
-                                </connections>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qlu-g1-CEH" customClass="CHGaugeView" customModule="CarHud" customModuleProvider="target">
-                                <rect key="frame" x="16" y="59" width="113" height="80"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" priority="750" constant="113" id="9ix-aU-U8t"/>
-                                    <constraint firstAttribute="height" priority="750" constant="80" id="IFk-iD-JXd"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="descriptionText">
-                                        <string key="value">fuel
-level</string>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="unitText" value="%"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
-                                        <real key="value" value="100"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showDecimals" value="NO"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outlet property="tapDelegate" destination="pUU-Ie-IWr" id="kol-kb-poM"/>
-                                </connections>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="qlu-g1-CEH" firstAttribute="leading" secondItem="MaT-nJ-cMj" secondAttribute="leading" priority="750" constant="16" id="309-9P-7G5"/>
-                            <constraint firstItem="sUf-jd-Unw" firstAttribute="top" secondItem="Cn4-EZ-hwo" secondAttribute="bottom" priority="750" constant="8" id="Gqr-GO-7PD"/>
-                            <constraint firstItem="Cn4-EZ-hwo" firstAttribute="top" secondItem="hod-pb-1rw" secondAttribute="bottom" constant="8" id="bGa-uj-ZZJ"/>
-                            <constraint firstAttribute="trailing" secondItem="Cn4-EZ-hwo" secondAttribute="trailing" id="gO2-De-wdU"/>
-                            <constraint firstItem="Cn4-EZ-hwo" firstAttribute="leading" secondItem="MaT-nJ-cMj" secondAttribute="leading" id="kkC-nD-Hsl"/>
-                            <constraint firstAttribute="trailing" secondItem="sUf-jd-Unw" secondAttribute="trailing" priority="750" constant="16" id="sKt-2h-t65"/>
-                            <constraint firstItem="qlu-g1-CEH" firstAttribute="top" secondItem="Cn4-EZ-hwo" secondAttribute="bottom" priority="750" constant="8" id="wi1-xV-mWy"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="titleLabel" destination="Cn4-EZ-hwo" id="jdF-7p-4Ns"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0Ku-dI-c0f" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1576" y="1027"/>
-        </scene>
-        <!--Tap Delegate-->
         <scene sceneID="Mpp-8a-jq5">
             <objects>
                 <viewController storyboardIdentifier="Engine" id="YB2-gw-Djl" customClass="CHEngineDisplayController" customModule="CarHud" customModuleProvider="target" sceneMemberID="viewController">
@@ -352,9 +262,19 @@ level</string>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="unitText" value="°C"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="descriptionText">
-                                        <string key="value">Coolage
+                                        <string key="value">Coolant
 Temp</string>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                        <real key="value" value="215"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                        <real key="value" value="-40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showDecimals" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="tapDelegate" destination="YB2-gw-Djl" id="5Je-SV-onf"/>
@@ -377,6 +297,9 @@ Temp</string>
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="showDecimals" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="tapDelegate" destination="YB2-gw-Djl" id="9Fc-Yb-XIv"/>
@@ -390,8 +313,21 @@ Temp</string>
                                     <constraint firstAttribute="height" priority="750" constant="80" id="EWM-zl-TvB"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="descriptionText" value="OIL TEMP"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="descriptionText">
+                                        <string key="value">INTAKE
+TEMP</string>
+                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="string" keyPath="unitText" value="°C"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                        <real key="value" value="-40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                        <real key="value" value="215"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showDecimals" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="tapDelegate" destination="YB2-gw-Djl" id="rYw-0S-oHD"/>
@@ -405,53 +341,33 @@ Temp</string>
                                     <constraint firstAttribute="height" priority="750" constant="80" id="4NX-G1-YeA"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="descriptionText" value="FUEL PRESSURE"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="descriptionText" value="Intake MAP"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="minValue">
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
-                                        <real key="value" value="765"/>
+                                        <real key="value" value="255"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="string" keyPath="unitText" value="kPa"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSelected" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showDecimals" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="tapDelegate" destination="YB2-gw-Djl" id="ZWA-eq-EdN"/>
                                 </connections>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RUNTIME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OHH-xW-7AD">
-                                <rect key="frame" x="16" y="577" width="568" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="fPw-sj-iFv"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:47:11" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQ6-cU-OZz">
-                                <rect key="frame" x="16" y="542" width="568" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="CbD-6b-iAl"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
-                                <color key="textColor" red="0.0" green="0.64731233639999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="iXm-WK-0RH" firstAttribute="leading" secondItem="Zkg-xc-Lyi" secondAttribute="leading" id="0jA-d1-cT7"/>
-                            <constraint firstAttribute="trailing" secondItem="MQ6-cU-OZz" secondAttribute="trailing" constant="16" id="6Y7-X2-4Ud"/>
-                            <constraint firstItem="MQ6-cU-OZz" firstAttribute="leading" secondItem="Zkg-xc-Lyi" secondAttribute="leading" constant="16" id="6aT-zA-eH6"/>
-                            <constraint firstItem="OHH-xW-7AD" firstAttribute="leading" secondItem="Zkg-xc-Lyi" secondAttribute="leading" constant="16" id="9Ne-Qv-89w"/>
                             <constraint firstItem="sgO-ue-LS4" firstAttribute="top" secondItem="8go-aC-F80" secondAttribute="bottom" priority="750" constant="8" id="GCq-hX-jhY"/>
-                            <constraint firstItem="OHH-xW-7AD" firstAttribute="top" secondItem="MQ6-cU-OZz" secondAttribute="bottom" id="Him-t7-UPk"/>
                             <constraint firstItem="jpx-NG-eqG" firstAttribute="top" secondItem="F06-lj-yL6" secondAttribute="bottom" priority="750" constant="8" id="LK9-JN-rjD"/>
                             <constraint firstAttribute="trailing" secondItem="sgO-ue-LS4" secondAttribute="trailing" priority="750" constant="16" id="RMB-fx-2nh"/>
-                            <constraint firstItem="tfb-Hq-rnm" firstAttribute="top" secondItem="OHH-xW-7AD" secondAttribute="bottom" constant="8" id="a61-V1-0BE"/>
                             <constraint firstAttribute="trailing" secondItem="8go-aC-F80" secondAttribute="trailing" priority="750" constant="16" id="apD-xg-QRx"/>
                             <constraint firstItem="F06-lj-yL6" firstAttribute="leading" secondItem="Zkg-xc-Lyi" secondAttribute="leading" priority="750" constant="16" id="eHf-f8-kGY"/>
-                            <constraint firstAttribute="trailing" secondItem="OHH-xW-7AD" secondAttribute="trailing" constant="16" id="fJU-pW-3Rd"/>
                             <constraint firstItem="jpx-NG-eqG" firstAttribute="leading" secondItem="Zkg-xc-Lyi" secondAttribute="leading" priority="750" constant="16" id="nu9-pk-1Cv"/>
                             <constraint firstItem="8go-aC-F80" firstAttribute="top" secondItem="iXm-WK-0RH" secondAttribute="bottom" priority="750" constant="8" id="vwK-0o-Flb"/>
                             <constraint firstItem="iXm-WK-0RH" firstAttribute="top" secondItem="q9X-Wi-Iko" secondAttribute="bottom" constant="8" id="zCz-QG-Hu8"/>
@@ -460,12 +376,16 @@ Temp</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="coolantTempGauge" destination="8go-aC-F80" id="KVF-Dn-04s"/>
+                        <outlet property="engineLoadGauge" destination="F06-lj-yL6" id="6o9-MQ-ZXD"/>
+                        <outlet property="intakeMAPGauge" destination="sgO-ue-LS4" id="VIk-mG-slu"/>
+                        <outlet property="intakeTempGauge" destination="jpx-NG-eqG" id="CfE-Kb-0iD"/>
                         <outlet property="titleLabel" destination="iXm-WK-0RH" id="CNL-bB-u6M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dqt-3k-XPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1576" y="1735"/>
+            <point key="canvasLocation" x="1576" y="1023"/>
         </scene>
         <!--Startup View Controller-->
         <scene sceneID="ZYU-Pp-MmR">

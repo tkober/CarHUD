@@ -32,12 +32,10 @@ class CHSecondaryDisplaysController: UIPageViewController, UIPageViewControllerD
     
     lazy var displays: [UIViewController] = [
         self.powerDisplay,
-        self.fuelDisplay,
         self.engineDisplay
     ]
     
     lazy var powerDisplay: CHPowerDisplayController = CHPowerDisplayController.display() as! CHPowerDisplayController
-    lazy var fuelDisplay: CHFuelDisplayController = CHFuelDisplayController.display() as! CHFuelDisplayController
     lazy var engineDisplay: CHEngineDisplayController = CHEngineDisplayController.display() as! CHEngineDisplayController
     
     
@@ -111,7 +109,7 @@ class CHSecondaryDisplaysController: UIPageViewController, UIPageViewControllerD
     }
     
     func longPress() {
-        
+        deactivateDisplay();
     }
     
     
@@ -128,7 +126,15 @@ class CHSecondaryDisplaysController: UIPageViewController, UIPageViewControllerD
     }
     
     func deactivateDisplay() {
-        
+        if let activePage = self.selectedPage {
+            activePage.becameInactive()
+        }
+        self.selectedPage = nil
+        for view in self.view.subviews {
+            if view is UIPageControl {
+                (view as! UIPageControl).alpha = 1
+            }
+        }
     }
 
 }

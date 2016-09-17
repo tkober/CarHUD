@@ -24,7 +24,6 @@
 		F1B9B28D1B656D5B00856A00 /* CHSpeedLimitDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B9B28C1B656D5B00856A00 /* CHSpeedLimitDisplayController.swift */; };
 		F1B9B28F1B656D7200856A00 /* CHPowerDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B9B28E1B656D7200856A00 /* CHPowerDisplayController.swift */; };
 		F1B9B2911B656D7E00856A00 /* CHEngineDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B9B2901B656D7E00856A00 /* CHEngineDisplayController.swift */; };
-		F1B9B2931B656D8B00856A00 /* CHFuelDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B9B2921B656D8B00856A00 /* CHFuelDisplayController.swift */; };
 		F1B9B2961B65703900856A00 /* CHSecondaryDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B9B2951B65703900856A00 /* CHSecondaryDisplay.swift */; };
 		F1E176791B645F820061C905 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E176781B645F820061C905 /* AppDelegate.swift */; };
 		F1E1767E1B645F820061C905 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E1767C1B645F820061C905 /* Main.storyboard */; };
@@ -67,7 +66,6 @@
 		F1B9B28C1B656D5B00856A00 /* CHSpeedLimitDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHSpeedLimitDisplayController.swift; sourceTree = "<group>"; };
 		F1B9B28E1B656D7200856A00 /* CHPowerDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHPowerDisplayController.swift; sourceTree = "<group>"; };
 		F1B9B2901B656D7E00856A00 /* CHEngineDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHEngineDisplayController.swift; sourceTree = "<group>"; };
-		F1B9B2921B656D8B00856A00 /* CHFuelDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHFuelDisplayController.swift; sourceTree = "<group>"; };
 		F1B9B2951B65703900856A00 /* CHSecondaryDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHSecondaryDisplay.swift; sourceTree = "<group>"; };
 		F1E176731B645F820061C905 /* CarHud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarHud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1E176771B645F820061C905 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -195,14 +193,6 @@
 			name = SecondaryDisplays;
 			sourceTree = "<group>";
 		};
-		F1B9B2881B656CDB00856A00 /* FuelDisplay */ = {
-			isa = PBXGroup;
-			children = (
-				F1B9B2921B656D8B00856A00 /* CHFuelDisplayController.swift */,
-			);
-			name = FuelDisplay;
-			sourceTree = "<group>";
-		};
 		F1B9B2891B656CDE00856A00 /* EngineDisplay */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,7 +225,6 @@
 				F1B9B28B1B656D2700856A00 /* SpeedLimitDisplay */,
 				F1B9B28A1B656CE100856A00 /* PowerDisplay */,
 				F1B9B2891B656CDE00856A00 /* EngineDisplay */,
-				F1B9B2881B656CDB00856A00 /* FuelDisplay */,
 			);
 			name = Displays;
 			sourceTree = "<group>";
@@ -410,7 +399,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1B9B2931B656D8B00856A00 /* CHFuelDisplayController.swift in Sources */,
 				DC89D2B11B82007700C89C5E /* CHLookAhead.swift in Sources */,
 				F1E176791B645F820061C905 /* AppDelegate.swift in Sources */,
 				DC9338531D7F7ED8003468B7 /* CHPrimaryDisplayViewController.swift in Sources */,

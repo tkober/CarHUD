@@ -22,7 +22,9 @@ class CHSecondaryDisplayViewController: UIViewController {
 
     func becameActive() {
         if let selected = self.selectedElement() {
-            selected.select()
+            if self.engagedElement == nil {
+                selected.select()
+            }
         }
     }
     
@@ -55,9 +57,11 @@ class CHSecondaryDisplayViewController: UIViewController {
     func engageSelectedElement() {
         if let selected = self.selectedElement() {
             if engagedElement != nil {
-               engagedElement = nil
+                engagedElement = nil
                 selected.engage()
+                selected.select()
             } else {
+                selected.deselect()
                 selected.engage()
                 engagedElement = selected
             }
