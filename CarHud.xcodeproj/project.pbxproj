@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC3423381D8E1142000B41D2 /* CHSpeedLimitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3423371D8E1142000B41D2 /* CHSpeedLimitView.swift */; };
+		DC34233A1D8E205A000B41D2 /* CHNoSpeedLimitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3423391D8E205A000B41D2 /* CHNoSpeedLimitView.swift */; };
+		DC34233C1D8E3C5A000B41D2 /* AirspeedScaleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34233B1D8E3C5A000B41D2 /* AirspeedScaleView.swift */; };
+		DC34233E1D8E4148000B41D2 /* CHScalePointerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34233D1D8E4148000B41D2 /* CHScalePointerView.swift */; };
 		DC66C5E11D859B8D00647092 /* CHSecondaryDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC66C5E01D859B8D00647092 /* CHSecondaryDisplayViewController.swift */; };
 		DC66C5E31D85AB6700647092 /* CHSelectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC66C5E21D85AB6700647092 /* CHSelectableView.swift */; };
 		DC7A80511D7EEF9E00A089B9 /* CHGaugeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7A80501D7EEF9E00A089B9 /* CHGaugeViewController.swift */; };
@@ -45,6 +49,10 @@
 
 /* Begin PBXFileReference section */
 		DC3423361D8DEBC8000B41D2 /* Status.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Status.h; path = CarBridge/Status.h; sourceTree = "<group>"; };
+		DC3423371D8E1142000B41D2 /* CHSpeedLimitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHSpeedLimitView.swift; sourceTree = "<group>"; };
+		DC3423391D8E205A000B41D2 /* CHNoSpeedLimitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHNoSpeedLimitView.swift; sourceTree = "<group>"; };
+		DC34233B1D8E3C5A000B41D2 /* AirspeedScaleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirspeedScaleView.swift; sourceTree = "<group>"; };
+		DC34233D1D8E4148000B41D2 /* CHScalePointerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHScalePointerView.swift; sourceTree = "<group>"; };
 		DC66C5E01D859B8D00647092 /* CHSecondaryDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHSecondaryDisplayViewController.swift; sourceTree = "<group>"; };
 		DC66C5E21D85AB6700647092 /* CHSelectableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHSelectableView.swift; sourceTree = "<group>"; };
 		DC7A80501D7EEF9E00A089B9 /* CHGaugeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHGaugeViewController.swift; sourceTree = "<group>"; };
@@ -290,8 +298,12 @@
 		F1E176981B64DFCE0061C905 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DC34233B1D8E3C5A000B41D2 /* AirspeedScaleView.swift */,
 				F1E1769B1B64E0120061C905 /* CHGaugeView.swift */,
 				DC66C5E21D85AB6700647092 /* CHSelectableView.swift */,
+				DC3423371D8E1142000B41D2 /* CHSpeedLimitView.swift */,
+				DC3423391D8E205A000B41D2 /* CHNoSpeedLimitView.swift */,
+				DC34233D1D8E4148000B41D2 /* CHScalePointerView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -400,13 +412,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC89D2B11B82007700C89C5E /* CHLookAhead.swift in Sources */,
+				DC34233C1D8E3C5A000B41D2 /* AirspeedScaleView.swift in Sources */,
 				F1E176791B645F820061C905 /* AppDelegate.swift in Sources */,
 				DC9338531D7F7ED8003468B7 /* CHPrimaryDisplayViewController.swift in Sources */,
 				DC89D2B91B82064100C89C5E /* CHCarBridgeConnector.swift in Sources */,
+				DC34233A1D8E205A000B41D2 /* CHNoSpeedLimitView.swift in Sources */,
 				DC66C5E11D859B8D00647092 /* CHSecondaryDisplayViewController.swift in Sources */,
+				DC3423381D8E1142000B41D2 /* CHSpeedLimitView.swift in Sources */,
 				DC89D2B51B82031000C89C5E /* CHOBD2Parser.swift in Sources */,
 				DCC0678B1D7DBA5E00D5B4B3 /* CHStartupViewController.swift in Sources */,
 				DC89D2B31B8200D600C89C5E /* CHScanner.swift in Sources */,
+				DC34233E1D8E4148000B41D2 /* CHScalePointerView.swift in Sources */,
 				F1B9B2861B656AF700856A00 /* CHSecondaryDisplaysController.swift in Sources */,
 				F1E1769C1B64E0120061C905 /* CHGaugeView.swift in Sources */,
 				DCC067851D7DB2A200D5B4B3 /* CHBLEConnector.swift in Sources */,

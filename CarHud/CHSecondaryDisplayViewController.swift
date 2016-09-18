@@ -30,7 +30,9 @@ class CHSecondaryDisplayViewController: UIViewController {
     
     func becameInactive() {
         if let selected = self.selectedElement() {
-            selected.deselect()
+            if shouldDeselectOnBecommingInactive() {
+                selected.deselect()
+            }
         }
     }
     
@@ -55,6 +57,9 @@ class CHSecondaryDisplayViewController: UIViewController {
     }
     
     func engageSelectedElement() {
+        if !shouldEngage() {
+            return
+        }
         if let selected = self.selectedElement() {
             if engagedElement != nil {
                 engagedElement = nil
@@ -67,6 +72,14 @@ class CHSecondaryDisplayViewController: UIViewController {
             }
             
         }
+    }
+    
+    func shouldDeselectOnBecommingInactive() -> Bool {
+        return true
+    }
+    
+    func shouldEngage() -> Bool {
+        return true
     }
     
 }

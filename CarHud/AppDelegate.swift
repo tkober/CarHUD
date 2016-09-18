@@ -12,7 +12,26 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    var speedLimit: UInt? {
+        didSet {
+            if let update = onSpeedLimitUpdate {
+                update(newValue: speedLimit)
+            }
+        }
+    }
+    
+    var onSpeedLimitUpdate: ((newValue: UInt?) -> ())?
+    
+    var overspeedTolerance: UInt = 15 {
+        didSet {
+            if let update = onOverspeedToleranceUpdate {
+                update(newValue: overspeedTolerance)
+            }
+        }
+    }
+    
+    var onOverspeedToleranceUpdate: ((newValue: UInt) -> ())?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         

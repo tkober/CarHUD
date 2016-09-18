@@ -21,7 +21,7 @@ class CHSecondaryDisplaysController: UIPageViewController, UIPageViewControllerD
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataSource = self
-        self.currentPage = self.displays.first as? CHSecondaryDisplayViewController
+        self.currentPage = self.displays[1] as? CHSecondaryDisplayViewController
         self.setViewControllers([currentPage!], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
         CHCarBridgeConnector.sharedInstance.commandReceiver = self
     }
@@ -31,10 +31,12 @@ class CHSecondaryDisplaysController: UIPageViewController, UIPageViewControllerD
     // MARK: | Displays
     
     lazy var displays: [UIViewController] = [
+        self.speedLimitDisplay,
         self.powerDisplay,
         self.engineDisplay
     ]
     
+    lazy var speedLimitDisplay: CHSpeedLimitDisplayController = CHSpeedLimitDisplayController.display() as! CHSpeedLimitDisplayController
     lazy var powerDisplay: CHPowerDisplayController = CHPowerDisplayController.display() as! CHPowerDisplayController
     lazy var engineDisplay: CHEngineDisplayController = CHEngineDisplayController.display() as! CHEngineDisplayController
     

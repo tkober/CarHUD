@@ -82,18 +82,18 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJn-M3-dtZ">
-                                <rect key="frame" x="45" y="39" width="245" height="130"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="130" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJn-M3-dtZ">
+                                <rect key="frame" x="70" y="213" width="220" height="175"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="UcC-8b-W5m"/>
-                                    <constraint firstAttribute="width" constant="245" id="u9N-R1-KF9"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" id="UcC-8b-W5m"/>
+                                    <constraint firstAttribute="width" constant="220" id="u9N-R1-KF9"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="169"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="150"/>
                                 <color key="textColor" red="0.0" green="0.64731233639999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="km/h" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOx-Im-Myt">
-                                <rect key="frame" x="8" y="177" width="284" height="21"/>
+                                <rect key="frame" x="70" y="396" width="220" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="5y6-qR-cBv"/>
                                 </constraints>
@@ -101,29 +101,62 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oYh-AK-2rn">
-                                <rect key="frame" x="8" y="39" width="29" height="130"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4wg-kD-NDb" customClass="AirspeedScaleView" customModule="CarHud" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="70" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maxSpeed">
+                                        <integer key="value" value="250"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="visibleRange">
+                                        <integer key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t2h-Ov-95e" customClass="CHScalePointerView" customModule="CarHud" customModuleProvider="target">
+                                <rect key="frame" x="60" y="213" width="20" height="175"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="Nr6-ej-99Y"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="pointerHeight">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="pointerWidth">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="verticalMargin">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="dOx-Im-Myt" firstAttribute="top" secondItem="eJn-M3-dtZ" secondAttribute="bottom" constant="8" id="1az-Lm-nez"/>
-                            <constraint firstAttribute="trailing" secondItem="dOx-Im-Myt" secondAttribute="trailing" constant="8" id="DwX-LE-IJc"/>
-                            <constraint firstItem="dOx-Im-Myt" firstAttribute="leading" secondItem="DTf-Lz-jtq" secondAttribute="leading" constant="8" id="GSa-dr-7Qu"/>
-                            <constraint firstItem="oYh-AK-2rn" firstAttribute="leading" secondItem="DTf-Lz-jtq" secondAttribute="leading" constant="8" id="O7g-d6-qN1"/>
-                            <constraint firstItem="eJn-M3-dtZ" firstAttribute="top" secondItem="kmI-Yn-HDn" secondAttribute="bottom" constant="8" id="T9s-Hd-RWy"/>
+                            <constraint firstItem="4wg-kD-NDb" firstAttribute="top" secondItem="GdU-HC-wuH" secondAttribute="bottom" id="DQz-yf-dbg"/>
+                            <constraint firstItem="dOx-Im-Myt" firstAttribute="leading" secondItem="eJn-M3-dtZ" secondAttribute="leading" id="Fom-85-jE7"/>
+                            <constraint firstItem="eJn-M3-dtZ" firstAttribute="top" secondItem="t2h-Ov-95e" secondAttribute="top" id="JEY-ga-oKg"/>
+                            <constraint firstItem="eJn-M3-dtZ" firstAttribute="leading" secondItem="t2h-Ov-95e" secondAttribute="leading" constant="10" id="Qep-yu-h30"/>
                             <constraint firstItem="kmI-Yn-HDn" firstAttribute="top" secondItem="GdU-HC-wuH" secondAttribute="bottom" constant="8" id="Wi2-f2-eKo"/>
                             <constraint firstAttribute="trailing" secondItem="eJn-M3-dtZ" secondAttribute="trailing" constant="10" id="XIa-8S-sH0"/>
-                            <constraint firstItem="dOx-Im-Myt" firstAttribute="top" secondItem="oYh-AK-2rn" secondAttribute="bottom" constant="8" id="b9e-CD-iO8"/>
-                            <constraint firstItem="oYh-AK-2rn" firstAttribute="top" secondItem="kmI-Yn-HDn" secondAttribute="bottom" constant="8" id="osE-Wd-2X7"/>
-                            <constraint firstItem="eJn-M3-dtZ" firstAttribute="leading" secondItem="oYh-AK-2rn" secondAttribute="trailing" constant="8" id="ozt-vl-Gpz"/>
+                            <constraint firstItem="9Ol-A2-SXg" firstAttribute="top" secondItem="4wg-kD-NDb" secondAttribute="bottom" id="a9s-dn-0oP"/>
+                            <constraint firstItem="4wg-kD-NDb" firstAttribute="leading" secondItem="DTf-Lz-jtq" secondAttribute="leading" id="cPS-1B-FMQ"/>
+                            <constraint firstItem="dOx-Im-Myt" firstAttribute="trailing" secondItem="eJn-M3-dtZ" secondAttribute="trailing" id="dTI-XI-Qc3"/>
+                            <constraint firstItem="eJn-M3-dtZ" firstAttribute="bottom" secondItem="t2h-Ov-95e" secondAttribute="bottom" id="nEL-RE-iyI"/>
+                            <constraint firstItem="eJn-M3-dtZ" firstAttribute="leading" secondItem="4wg-kD-NDb" secondAttribute="trailing" id="pxQ-e7-FED"/>
+                            <constraint firstItem="eJn-M3-dtZ" firstAttribute="centerY" secondItem="DTf-Lz-jtq" secondAttribute="centerY" id="rsV-MY-uIm"/>
                             <constraint firstAttribute="trailing" secondItem="kmI-Yn-HDn" secondAttribute="trailing" id="xV3-No-oge"/>
                             <constraint firstItem="kmI-Yn-HDn" firstAttribute="leading" secondItem="DTf-Lz-jtq" secondAttribute="leading" id="y4a-fE-cLa"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="speedLabel" destination="eJn-M3-dtZ" id="q7l-9Z-nGl"/>
+                        <outlet property="speedScale" destination="4wg-kD-NDb" id="dcz-m2-hyb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o9x-2C-der" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -386,6 +419,358 @@ TEMP</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dqt-3k-XPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1576" y="1023"/>
+        </scene>
+        <!--Speed Limit Delegate-->
+        <scene sceneID="XtZ-S2-dfR">
+            <objects>
+                <viewController storyboardIdentifier="SpeedLimit" id="9mn-Wf-fA5" customClass="CHSpeedLimitDisplayController" customModule="CarHud" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SeB-VS-PVb"/>
+                        <viewControllerLayoutGuide type="bottom" id="r4Y-pX-sJ7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Itc-TX-l8U">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SPEED LIMIT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fuI-aQ-vzt">
+                                <rect key="frame" x="0.0" y="28" width="600" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="n8B-Iv-y3w"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i8u-80-YQK" customClass="CHNoSpeedLimitView" customModule="CarHud" customModuleProvider="target">
+                                <rect key="frame" x="215" y="235" width="170" height="170"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="170" id="HU5-Nf-nVt"/>
+                                    <constraint firstAttribute="width" constant="170" id="vPs-64-eYa"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="frameSize">
+                                        <real key="value" value="0.10000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="symbolSize">
+                                        <real key="value" value="0.050000000000000003"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSelected" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <integer key="value" value="999"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedFrameColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="speedLimitDelegate" destination="9mn-Wf-fA5" id="IHD-1y-8lz"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lO2-QP-OZS" customClass="CHSpeedLimitView" customModule="CarHud" customModuleProvider="target">
+                                <rect key="frame" x="215" y="235" width="170" height="170"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="L9m-eG-DWa"/>
+                                    <constraint firstAttribute="height" constant="170" id="dQ8-bN-Nj1"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="frameSize">
+                                        <real key="value" value="0.10000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="symbolSize">
+                                        <real key="value" value="0.40000000000000002"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <integer key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSelected" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="speedLimitDelegate" destination="9mn-Wf-fA5" id="xgy-R6-JNg"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JCr-8v-E70" customClass="CHSpeedLimitView" customModule="CarHud" customModuleProvider="target">
+                                <rect key="frame" x="215" y="235" width="170" height="170"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="170" id="PEy-bz-oF6"/>
+                                    <constraint firstAttribute="width" constant="170" id="S8U-5i-6Ap"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="frameSize">
+                                        <real key="value" value="0.10000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="symbolSize">
+                                        <real key="value" value="0.40000000000000002"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSelected" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="speedLimitDelegate" destination="9mn-Wf-fA5" id="q8r-0T-eVc"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ND-k2-4GV" customClass="CHSpeedLimitView" customModule="CarHud" customModuleProvider="target">
+                                <rect key="frame" x="215" y="235" width="170" height="170"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="4ms-x6-BZb"/>
+                                    <constraint firstAttribute="height" constant="170" id="kDP-ca-BgM"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="frameSize">
+                                        <real key="value" value="0.10000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="symbolSize">
+                                        <real key="value" value="0.40000000000000002"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <integer key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSelected" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="speedLimitDelegate" destination="9mn-Wf-fA5" id="I1Q-Fd-6T6"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iXe-Qd-Y03" customClass="CHSpeedLimitView" customModule="CarHud" customModuleProvider="target">
+                                <rect key="frame" x="215" y="235" width="170" height="170"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="170" id="fuD-ds-zpc"/>
+                                    <constraint firstAttribute="width" constant="170" id="gBe-u8-2bD"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="frameSize">
+                                        <real key="value" value="0.10000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="symbolSize">
+                                        <real key="value" value="0.40000000000000002"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <integer key="value" value="60"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSelected" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="speedLimitDelegate" destination="9mn-Wf-fA5" id="K0u-Tj-AJV"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cvm-LI-NS1" customClass="CHSpeedLimitView" customModule="CarHud" customModuleProvider="target">
+                                <rect key="frame" x="215" y="235" width="170" height="170"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="170" id="5dF-uP-M5Y"/>
+                                    <constraint firstAttribute="width" constant="170" id="U2i-di-90g"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="frameSize">
+                                        <real key="value" value="0.10000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="symbolSize">
+                                        <real key="value" value="0.40000000000000002"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <integer key="value" value="70"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSelected" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="speedLimitDelegate" destination="9mn-Wf-fA5" id="GXK-q4-zmh"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m5G-Ja-EnP" customClass="CHSpeedLimitView" customModule="CarHud" customModuleProvider="target">
+                                <rect key="frame" x="215" y="235" width="170" height="170"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="KxG-NU-KJN"/>
+                                    <constraint firstAttribute="height" constant="170" id="t77-Ei-9QX"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="frameSize">
+                                        <real key="value" value="0.10000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="symbolSize">
+                                        <real key="value" value="0.40000000000000002"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <integer key="value" value="80"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSelected" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="speedLimitDelegate" destination="9mn-Wf-fA5" id="wwm-Cf-Kyd"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GGT-q5-oK7" customClass="CHSpeedLimitView" customModule="CarHud" customModuleProvider="target">
+                                <rect key="frame" x="215" y="235" width="170" height="170"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="Kfa-Aq-6j3"/>
+                                    <constraint firstAttribute="height" constant="170" id="aNe-oo-DPb"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="frameSize">
+                                        <real key="value" value="0.10000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="symbolSize">
+                                        <real key="value" value="0.40000000000000002"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <integer key="value" value="90"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSelected" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="speedLimitDelegate" destination="9mn-Wf-fA5" id="ieL-t6-eNF"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8F1-p8-zR0" customClass="CHSpeedLimitView" customModule="CarHud" customModuleProvider="target">
+                                <rect key="frame" x="215" y="235" width="170" height="170"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="170" id="Q9n-Sr-xiC"/>
+                                    <constraint firstAttribute="width" constant="170" id="Xrq-Do-ToO"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="frameSize">
+                                        <real key="value" value="0.10000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="symbolSize">
+                                        <real key="value" value="0.40000000000000002"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <integer key="value" value="100"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSelected" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="speedLimitDelegate" destination="9mn-Wf-fA5" id="JjH-pO-bPk"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lln-4N-O08" customClass="CHSpeedLimitView" customModule="CarHud" customModuleProvider="target">
+                                <rect key="frame" x="215" y="235" width="170" height="170"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="MVx-iS-ISC"/>
+                                    <constraint firstAttribute="height" constant="170" id="tm1-fK-AOF"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="frameSize">
+                                        <real key="value" value="0.10000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="symbolSize">
+                                        <real key="value" value="0.40000000000000002"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <integer key="value" value="110"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSelected" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="speedLimitDelegate" destination="9mn-Wf-fA5" id="7eH-Qr-lCr"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BnF-I2-FqY" customClass="CHSpeedLimitView" customModule="CarHud" customModuleProvider="target">
+                                <rect key="frame" x="215" y="235" width="170" height="170"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="UgD-aL-14o"/>
+                                    <constraint firstAttribute="height" constant="170" id="swk-GF-SEq"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="frameSize">
+                                        <real key="value" value="0.10000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="symbolSize">
+                                        <real key="value" value="0.40000000000000002"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <integer key="value" value="120"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSelected" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="speedLimitDelegate" destination="9mn-Wf-fA5" id="a15-ph-e9k"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Os-de-tlv" customClass="CHSpeedLimitView" customModule="CarHud" customModuleProvider="target">
+                                <rect key="frame" x="215" y="235" width="170" height="170"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="Aev-ww-Dl1"/>
+                                    <constraint firstAttribute="height" constant="170" id="Pp6-N1-BUq"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="frameSize">
+                                        <real key="value" value="0.10000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="symbolSize">
+                                        <real key="value" value="0.40000000000000002"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <integer key="value" value="130"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSelected" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="speedLimitDelegate" destination="9mn-Wf-fA5" id="dIj-gW-Uaq"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="m5G-Ja-EnP" firstAttribute="centerY" secondItem="Itc-TX-l8U" secondAttribute="centerY" constant="20" id="2v7-j0-A7P"/>
+                            <constraint firstItem="cvm-LI-NS1" firstAttribute="centerX" secondItem="Itc-TX-l8U" secondAttribute="centerX" id="7d4-SU-nWK"/>
+                            <constraint firstItem="cvm-LI-NS1" firstAttribute="centerY" secondItem="Itc-TX-l8U" secondAttribute="centerY" constant="20" id="8Lu-CG-4U7"/>
+                            <constraint firstItem="7Os-de-tlv" firstAttribute="centerX" secondItem="Itc-TX-l8U" secondAttribute="centerX" id="AOZ-bh-GbX"/>
+                            <constraint firstItem="Lln-4N-O08" firstAttribute="centerY" secondItem="Itc-TX-l8U" secondAttribute="centerY" constant="20" id="GoG-pc-NLq"/>
+                            <constraint firstItem="fuI-aQ-vzt" firstAttribute="leading" secondItem="Itc-TX-l8U" secondAttribute="leading" id="Gol-3G-ZOy"/>
+                            <constraint firstItem="7ND-k2-4GV" firstAttribute="centerX" secondItem="Itc-TX-l8U" secondAttribute="centerX" id="IQ5-8f-UM9"/>
+                            <constraint firstAttribute="trailing" secondItem="fuI-aQ-vzt" secondAttribute="trailing" id="KHT-W4-7qC"/>
+                            <constraint firstItem="8F1-p8-zR0" firstAttribute="centerX" secondItem="Itc-TX-l8U" secondAttribute="centerX" id="RVf-TX-nsu"/>
+                            <constraint firstItem="iXe-Qd-Y03" firstAttribute="centerX" secondItem="Itc-TX-l8U" secondAttribute="centerX" id="SjV-t4-bsd"/>
+                            <constraint firstItem="Lln-4N-O08" firstAttribute="centerX" secondItem="Itc-TX-l8U" secondAttribute="centerX" id="VbF-mH-25I"/>
+                            <constraint firstItem="JCr-8v-E70" firstAttribute="centerX" secondItem="Itc-TX-l8U" secondAttribute="centerX" id="Ywp-u8-JY2"/>
+                            <constraint firstItem="i8u-80-YQK" firstAttribute="centerX" secondItem="Itc-TX-l8U" secondAttribute="centerX" id="b35-fM-wJe"/>
+                            <constraint firstItem="JCr-8v-E70" firstAttribute="centerY" secondItem="Itc-TX-l8U" secondAttribute="centerY" constant="20" id="bmJ-bi-bQD"/>
+                            <constraint firstItem="BnF-I2-FqY" firstAttribute="centerY" secondItem="Itc-TX-l8U" secondAttribute="centerY" constant="20" id="c7j-98-ruS"/>
+                            <constraint firstItem="GGT-q5-oK7" firstAttribute="centerX" secondItem="Itc-TX-l8U" secondAttribute="centerX" id="cHp-Ws-sM3"/>
+                            <constraint firstItem="7ND-k2-4GV" firstAttribute="centerY" secondItem="Itc-TX-l8U" secondAttribute="centerY" constant="20" id="cSQ-er-h9t"/>
+                            <constraint firstItem="fuI-aQ-vzt" firstAttribute="top" secondItem="SeB-VS-PVb" secondAttribute="bottom" constant="8" id="cVm-Ai-uaj"/>
+                            <constraint firstItem="iXe-Qd-Y03" firstAttribute="centerY" secondItem="Itc-TX-l8U" secondAttribute="centerY" constant="20" id="eao-67-YnM"/>
+                            <constraint firstItem="GGT-q5-oK7" firstAttribute="centerY" secondItem="Itc-TX-l8U" secondAttribute="centerY" constant="20" id="g3W-B0-Rbq"/>
+                            <constraint firstItem="7Os-de-tlv" firstAttribute="centerY" secondItem="Itc-TX-l8U" secondAttribute="centerY" constant="20" id="hpk-6u-has"/>
+                            <constraint firstItem="i8u-80-YQK" firstAttribute="centerY" secondItem="Itc-TX-l8U" secondAttribute="centerY" constant="20" id="lx1-47-cZh"/>
+                            <constraint firstItem="m5G-Ja-EnP" firstAttribute="centerX" secondItem="Itc-TX-l8U" secondAttribute="centerX" id="mze-NV-Shv"/>
+                            <constraint firstItem="BnF-I2-FqY" firstAttribute="centerX" secondItem="Itc-TX-l8U" secondAttribute="centerX" id="qLg-1c-8sq"/>
+                            <constraint firstItem="8F1-p8-zR0" firstAttribute="centerY" secondItem="Itc-TX-l8U" secondAttribute="centerY" constant="20" id="rcN-Ua-koW"/>
+                            <constraint firstItem="lO2-QP-OZS" firstAttribute="centerY" secondItem="Itc-TX-l8U" secondAttribute="centerY" constant="20" id="tgE-QU-6r3"/>
+                            <constraint firstItem="lO2-QP-OZS" firstAttribute="centerX" secondItem="Itc-TX-l8U" secondAttribute="centerX" id="w09-99-mtL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="speedLimit100" destination="8F1-p8-zR0" id="KgT-Yt-61m"/>
+                        <outlet property="speedLimit110" destination="Lln-4N-O08" id="wg8-Fi-9MW"/>
+                        <outlet property="speedLimit120" destination="BnF-I2-FqY" id="G8M-PY-Auy"/>
+                        <outlet property="speedLimit130" destination="7Os-de-tlv" id="VA7-DK-RUf"/>
+                        <outlet property="speedLimit30" destination="lO2-QP-OZS" id="boc-5s-mjN"/>
+                        <outlet property="speedLimit40" destination="JCr-8v-E70" id="qQ0-N8-L3w"/>
+                        <outlet property="speedLimit50" destination="7ND-k2-4GV" id="EKv-K6-QGi"/>
+                        <outlet property="speedLimit60" destination="iXe-Qd-Y03" id="RYo-AO-HTX"/>
+                        <outlet property="speedLimit70" destination="cvm-LI-NS1" id="chv-0u-Ee7"/>
+                        <outlet property="speedLimit80" destination="m5G-Ja-EnP" id="X5D-CJ-MxS"/>
+                        <outlet property="speedLimit90" destination="GGT-q5-oK7" id="GrH-I9-feQ"/>
+                        <outlet property="speedLimitNo" destination="i8u-80-YQK" id="xxy-Dh-awf"/>
+                        <outlet property="titleLabel" destination="fuI-aQ-vzt" id="aeD-S2-VxI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E8P-ln-wrN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1576" y="-353"/>
         </scene>
         <!--Startup View Controller-->
         <scene sceneID="ZYU-Pp-MmR">
