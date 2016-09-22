@@ -44,8 +44,8 @@ class CHSpeedLimitDisplayController: CHGaugeViewController, CHSecondaryDisplay, 
     }
     
     
-    func didSelectSpeedLimit(speedLimit: UInt?) {
-        (UIApplication.sharedApplication().delegate as! AppDelegate).speedLimit = speedLimit
+    func didSelectSpeedLimit(_ speedLimit: UInt?) {
+        (UIApplication.shared.delegate as! AppDelegate).speedLimit = speedLimit
     }
     
     
@@ -54,8 +54,8 @@ class CHSpeedLimitDisplayController: CHGaugeViewController, CHSecondaryDisplay, 
     
     
     
-    private static let STORYBOARD_NAME = "Main";
-    private static let STORYBOARD_ID = "SpeedLimit";
+    fileprivate static let STORYBOARD_NAME = "Main";
+    fileprivate static let STORYBOARD_ID = "SpeedLimit";
     
     
     // MARK: - CHSecondaryDisplay
@@ -63,7 +63,7 @@ class CHSpeedLimitDisplayController: CHGaugeViewController, CHSecondaryDisplay, 
     
     
     static func display() -> CHSecondaryDisplay {
-        return UIStoryboard(name: self.STORYBOARD_NAME, bundle: nil).instantiateViewControllerWithIdentifier(STORYBOARD_ID) as! CHSecondaryDisplay;
+        return UIStoryboard(name: self.STORYBOARD_NAME, bundle: nil).instantiateViewController(withIdentifier: STORYBOARD_ID) as! CHSecondaryDisplay;
     }
     
     override func shouldDeselectOnBecommingInactive() -> Bool {

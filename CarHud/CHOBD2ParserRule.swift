@@ -19,15 +19,15 @@ let CH_OBD2_PARSING_RULE_ERROR_UNDEFINED_VALUE_USER_INFO = [NSLocalizedDescripti
 
 
 enum CHOBD2ParserRuleError: Int {
-    case InsufficientData   = 1
-    case UndefinedValue    = 2
+    case insufficientData   = 1
+    case undefinedValue    = 2
 }
 
 
 enum CHOBD2ParserRuleValueSize: UInt8 {
-    case U_INT_8      = 1
-    case U_INT_16     = 2
-    case U_INT_32     = 4
+    case u_INT_8      = 1
+    case u_INT_16     = 2
+    case u_INT_32     = 4
 }
 
 
@@ -43,7 +43,7 @@ class CHOBD2ParserRule: NSObject {
     }
     
     
-    init(pid: CHOBD2_PID, valueSize: CHOBD2ParserRuleValueSize = CHOBD2ParserRuleValueSize.U_INT_8) {
+    init(pid: CHOBD2_PID, valueSize: CHOBD2ParserRuleValueSize = CHOBD2ParserRuleValueSize.u_INT_8) {
         self._pid = pid
         self.valueSize = valueSize
     }
@@ -62,10 +62,10 @@ class CHOBD2ParserRule: NSObject {
     // MARK: | Applying Rule
     
     
-    func apply(scanner: CHScanner) -> CHOBD2ParserRuleResult {
+    func apply(_ scanner: CHScanner) -> CHOBD2ParserRuleResult {
         var result: CHOBD2ParserRuleResult = (self.pid, nil, nil)
         if !scanner.nextToken(self.valueSize.rawValue) {
-            result.error = NSError(domain: CHOBD2ParserRuleErrorDomain, code: CHOBD2ParserRuleError.InsufficientData.rawValue, userInfo: CH_OBD2_PARSING_RULE_ERROR_INSUFFICIENT_DATA_USER_INFO)
+            result.error = NSError(domain: CHOBD2ParserRuleErrorDomain, code: CHOBD2ParserRuleError.insufficientData.rawValue, userInfo: CH_OBD2_PARSING_RULE_ERROR_INSUFFICIENT_DATA_USER_INFO)
             return result
         }
         result.value = self.transformValue(scanner.lookAhead!, withSize: self.valueSize)
@@ -77,24 +77,24 @@ class CHOBD2ParserRule: NSObject {
     // MARK: | PID
     
     
-    private var _pid: CHOBD2_PID
-    private var valueSize: CHOBD2ParserRuleValueSize
+    fileprivate var _pid: CHOBD2_PID
+    fileprivate var valueSize: CHOBD2ParserRuleValueSize
     
     
     // MARK: | Value Transformation
     
     
-    private func transformValue(value: CHLookAhead, withSize size: CHOBD2ParserRuleValueSize) -> NSNumber {
+    fileprivate func transformValue(_ value: CHLookAhead, withSize size: CHOBD2ParserRuleValueSize) -> NSNumber {
         switch size {
 
-        case .U_INT_8:
-            return NSNumber(unsignedChar: value.asUInt8)
+        case .u_INT_8:
+            return NSNumber(value: value.asUInt8 as UInt8)
             
-        case .U_INT_16:
-            return NSNumber(unsignedShort: value.asUInt16)
+        case .u_INT_16:
+            return NSNumber(value: value.asUInt16 as UInt16)
             
-        case .U_INT_32:
-            return NSNumber(unsignedInt: value.asUInt32)
+        case .u_INT_32:
+            return NSNumber(value: value.asUInt32 as UInt32)
         }
     }
 }

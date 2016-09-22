@@ -29,7 +29,7 @@ extension CHLookAhead {
     var asUInt64: UInt64 {
         get {
             var value: UInt64 = 0
-            self.getBytes(&value, length: min(sizeof(UInt64), self.length))
+            self.getBytes(&value, length: min(MemoryLayout<UInt64>.size, self.length))
             return value
         }
     }
@@ -48,7 +48,7 @@ extension CHLookAhead {
     var asUInt32: UInt32 {
         get {
             var value: UInt32 = 0
-            self.getBytes(&value, length: min(sizeof(UInt32), self.length))
+            self.getBytes(&value, length: min(MemoryLayout<UInt32>.size, self.length))
             return value
         }
     }
@@ -67,7 +67,7 @@ extension CHLookAhead {
     var asUInt16: UInt16 {
         get {
             var value: UInt16 = 0
-            self.getBytes(&value, length: min(sizeof(UInt16), self.length))
+            self.getBytes(&value, length: min(MemoryLayout<UInt16>.size, self.length))
             return value
         }
     }
@@ -86,7 +86,7 @@ extension CHLookAhead {
     var asUInt8: UInt8 {
         get {
             var value: UInt8 = 0
-            self.getBytes(&value, length: min(sizeof(UInt8), self.length))
+            self.getBytes(&value, length: min(MemoryLayout<UInt8>.size, self.length))
             return value
         }
     }

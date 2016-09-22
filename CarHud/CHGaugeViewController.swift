@@ -15,7 +15,7 @@ class CHGaugeViewController: CHSecondaryDisplayViewController, CHGaugeViewDelega
     var maximizedGauge: CHGaugeView?
     var maximizedConstraints: [NSLayoutConstraint]?
     
-    func gaugeTapped(gauge: CHGaugeView) {
+    func gaugeTapped(_ gauge: CHGaugeView) {
         if let maximized = maximizedGauge {
             unmaximizeGauge(maximized)
             maximizedGauge = nil
@@ -25,40 +25,40 @@ class CHGaugeViewController: CHSecondaryDisplayViewController, CHGaugeViewDelega
         }
     }
     
-    func maximizeGauge(gauge: CHGaugeView) {
+    func maximizeGauge(_ gauge: CHGaugeView) {
         gauge.backgroundColor = self.view.backgroundColor
         
         let bindings = Dictionary(dictionaryLiteral: ("gauge", gauge))
         var allConstraints = [NSLayoutConstraint]()
         
-        allConstraints += NSLayoutConstraint.constraintsWithVisualFormat("V:|-40-[gauge]-0-|", options: [], metrics: nil, views: bindings)
-        allConstraints += NSLayoutConstraint.constraintsWithVisualFormat("H:|-10-[gauge]-10-|", options: [], metrics: nil, views: bindings)
+        allConstraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|-40-[gauge]-0-|", options: [], metrics: nil, views: bindings)
+        allConstraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-10-[gauge]-10-|", options: [], metrics: nil, views: bindings)
         
         for view in self.view.subviews {
             if view != titleLabel && view != gauge {
-                view.hidden = true
+                view.isHidden = true
             }
         }
         
         self.maximizedConstraints = allConstraints
-        UIView.animateWithDuration(0.3) {
-            NSLayoutConstraint.activateConstraints(allConstraints)
+        UIView.animate(withDuration: 0.3, animations: {
+            NSLayoutConstraint.activate(allConstraints)
             [self.view .layoutIfNeeded()];
-        };
+        }) ;
     }
     
-    func unmaximizeGauge(gauge: CHGaugeView) {
-        gauge.backgroundColor = UIColor.clearColor()
-        UIView.animateWithDuration(0.3, animations: {
-            NSLayoutConstraint.deactivateConstraints(self.maximizedConstraints!)
+    func unmaximizeGauge(_ gauge: CHGaugeView) {
+        gauge.backgroundColor = UIColor.clear
+        UIView.animate(withDuration: 0.3, animations: {
+            NSLayoutConstraint.deactivate(self.maximizedConstraints!)
             [self.view .layoutIfNeeded()];
-        }) { (finished: Bool) in
+        }, completion: { (finished: Bool) in
             for view in self.view.subviews {
                 if view != self.titleLabel && view != gauge {
-                    view.hidden = false
+                    view.isHidden = false
                 }
             }
-        }
+        }) 
     }
 }
 

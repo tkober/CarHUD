@@ -51,12 +51,12 @@ import UIKit
     @IBInspectable var speedLimitIndicatorWidth: CGFloat = 5
     
 
-    func setAirspeed(airspeed: UInt) {
+    func setAirspeed(_ airspeed: UInt) {
         let value = max(0, airspeed)
         self._airspeed = value
     }
     
-    private var _airspeed: UInt = 0 {
+    fileprivate var _airspeed: UInt = 0 {
         didSet {
             self.setNeedsDisplay()
         }
@@ -84,9 +84,9 @@ import UIKit
     
     
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         if let image = self.scaleImage {
-            let scale = UIScreen.mainScreen().scale
+            let scale = UIScreen.main.scale
             
             let width = rect.width * scale
             let height = rect.height * scale
@@ -94,17 +94,17 @@ import UIKit
             let y = image.size.height - height - steps * CGFloat(self._airspeed);
             let sectionFrame = CGRect(x: 0, y: y, width: width, height: height)
             
-            let section = CGImageCreateWithImageInRect(image.CGImage, sectionFrame)
-            UIImage(CGImage: section!).drawInRect(rect)
+            let section = image.cgImage?.cropping(to: sectionFrame)
+            UIImage(cgImage: section!).draw(in: rect)
         } else {
-            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            DispatchQueue.main.async { () -> Void in
                 self.renderScale(rect)
             }
         }
     }
     
-    private func renderScale(frame: CGRect) {
-        let scale = UIScreen.mainScreen().scale
+    fileprivate func renderScale(_ frame: CGRect) {
+        let scale = UIScreen.main.scale
         
         let frameWidth = frame.width * scale
         let frameHeight = frame.height * scale
@@ -117,51 +117,51 @@ import UIKit
         let context = UIGraphicsGetCurrentContext()
         
         // Scale
-        CGContextSetLineWidth(context, self.scaleWidth * scale)
-        CGContextSetStrokeColorWithColor(context, self.scaleColor.CGColor)
+        context?.setLineWidth(self.scaleWidth * scale)
+        context?.setStrokeColor(self.scaleColor.cgColor)
         
         var value: UInt = 0
         var i = 0
         let labelMargin = self.labelMargin * frameWidth
         while value <= self.maxSpeed {
             let y = imageHeight - (steps * CGFloat((self.visibleRange / 2) + value))
-            CGContextMoveToPoint(context, imageWidth - (self.areaWidth * scale), y)
-            CGContextAddLineToPoint(context, imageWidth - (self.notchWidth * scale), y)
+            context?.move(to: CGPoint(x: imageWidth - (self.areaWidth * scale), y: y))
+            context?.addLine(to: CGPoint(x: imageWidth - (self.notchWidth * scale), y: y))
             
             // Label
             if i % self.stepsPerLabel == 0 {
-                let text: NSString = "\(value)"
+                let text: NSString = "\(value)" as NSString
                 let labelAttributes: [String: AnyObject] = [
-                    NSFontAttributeName: UIFont.boldSystemFontOfSize(frameWidth * self.fontSize),
+                    NSFontAttributeName: UIFont.boldSystemFont(ofSize: frameWidth * self.fontSize),
                     NSForegroundColorAttributeName: labelColor,
                 ]
                 
-                let boundingBox = text.sizeWithAttributes(labelAttributes)
-                text.drawAtPoint(CGPoint(x: labelMargin, y: y - (boundingBox.height / 2.0)), withAttributes: labelAttributes)
+                let boundingBox = text.size(attributes: labelAttributes)
+                text.draw(at: CGPoint(x: labelMargin, y: y - (boundingBox.height / 2.0)), withAttributes: labelAttributes)
             }
             
             value += self.scaleSteps
             i += 1
         }
-        CGContextStrokePath(context)
+        context?.strokePath()
         
         // Speed Limit
         if let speedLimit = self.speedLimit {
             let speedLimitY = imageHeight - (steps * CGFloat((self.visibleRange / 2) + speedLimit))
             let overspeedY = imageHeight - (steps * CGFloat((self.visibleRange / 2) + speedLimit + overspeedTolerance))
-            CGContextSetStrokeColorWithColor(context, UIColor.orangeColor().CGColor)
-            CGContextMoveToPoint(context, imageWidth - (overspeedIndicatorWidth * scale), speedLimitY)
-            CGContextAddLineToPoint(context, imageWidth - (speedLimitIndicatorWidth * scale), speedLimitY)
-            CGContextAddLineToPoint(context, imageWidth - (speedLimitIndicatorWidth * scale), overspeedY)
-            CGContextStrokePath(context)
+            context?.setStrokeColor(UIColor.orange.cgColor)
+            context?.move(to: CGPoint(x: imageWidth - (overspeedIndicatorWidth * scale), y: speedLimitY))
+            context?.addLine(to: CGPoint(x: imageWidth - (speedLimitIndicatorWidth * scale), y: speedLimitY))
+            context?.addLine(to: CGPoint(x: imageWidth - (speedLimitIndicatorWidth * scale), y: overspeedY))
+            context?.strokePath()
             
-            CGContextSetFillColorWithColor(context, UIColor.redColor().CGColor)
-            CGContextMoveToPoint(context, imageWidth - (overspeedIndicatorWidth * scale), overspeedY)
-            CGContextAddLineToPoint(context, imageWidth, overspeedY)
-            CGContextAddLineToPoint(context, imageWidth, 0)
-            CGContextAddLineToPoint(context, imageWidth - (overspeedIndicatorWidth * scale), 0)
-            CGContextAddLineToPoint(context, imageWidth - (overspeedIndicatorWidth * scale), overspeedY)
-            CGContextFillPath(context)
+            context?.setFillColor(UIColor.red.cgColor)
+            context?.move(to: CGPoint(x: imageWidth - (overspeedIndicatorWidth * scale), y: overspeedY))
+            context?.addLine(to: CGPoint(x: imageWidth, y: overspeedY))
+            context?.addLine(to: CGPoint(x: imageWidth, y: 0))
+            context?.addLine(to: CGPoint(x: imageWidth - (overspeedIndicatorWidth * scale), y: 0))
+            context?.addLine(to: CGPoint(x: imageWidth - (overspeedIndicatorWidth * scale), y: overspeedY))
+            context?.fillPath()
         }
     
         let image = UIGraphicsGetImageFromCurrentImageContext()

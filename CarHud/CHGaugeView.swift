@@ -11,7 +11,7 @@ import UIKit
 
 protocol CHGaugeViewDelegate {
     
-    func gaugeTapped(gauge: CHGaugeView)
+    func gaugeTapped(_ gauge: CHGaugeView)
     
 }
 
@@ -156,32 +156,32 @@ protocol CHGaugeViewDelegate {
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(gaugeTapped)))
     }
     
-    override func drawRect(rect: CGRect) {
-        super.drawRect(rect);
+    override func draw(_ rect: CGRect) {
+        super.draw(rect);
         
         let size = min(rect.height, rect.width * (1-unitAreaSize))
         
         let context = UIGraphicsGetCurrentContext()
         let scaleSize = isSelected ? self.scaleSize * 4 : self.scaleSize
-        CGContextSetLineWidth(context, size*scaleSize)
-        CGContextSetStrokeColorWithColor(context, isSelected ? UIColor.whiteColor().CGColor : scaleColor.CGColor)
+        context?.setLineWidth(size*scaleSize)
+        context?.setStrokeColor(isSelected ? UIColor.white.cgColor : scaleColor.cgColor)
         
-        let center = CGPointMake(size/2.0, size/2.0);
+        let center = CGPoint(x: size/2.0, y: size/2.0);
         let from = 215.0;
         let to = 115.0;
         let range = (360.0 - from) + to;
         let radius = (size / 2.0) - (size*indicatorSize + size*scaleSize);
         
         CGContextAddArc(context, center.x, center.y, radius, degreesToRadians(from), degreesToRadians(to), 0)
-        CGContextDrawPath(context, CGPathDrawingMode.Stroke)
+        context?.drawPath(using: CGPathDrawingMode.stroke)
         
-        CGContextSetLineWidth(context, size*indicatorSize);
-        CGContextSetStrokeColorWithColor(context, indicatorColor.CGColor);
+        context?.setLineWidth(size*indicatorSize);
+        context?.setStrokeColor(indicatorColor.cgColor);
         
         let relativeValue = (self.value + abs(self.minValue)) / abs(self.minValue - self.maxValue)
-        let valueToDegrees = (from + (relativeValue * range)) % 360.0
+        let valueToDegrees = (from + (relativeValue * range)).truncatingRemainder(dividingBy: 360.0)
         CGContextAddArc(context, center.x, center.y, radius+(size*indicatorSize / (isSelected ? 1.0 : 2.0)), degreesToRadians(from), degreesToRadians(valueToDegrees), 0);
-        CGContextStrokePath(context);
+        context?.strokePath();
         
         drawDescriptionText(size)
         drawUnitText(size)
@@ -189,44 +189,44 @@ protocol CHGaugeViewDelegate {
     }
     
     
-    private func drawDescriptionText(gaugeSize: CGFloat) {
-        let text = descriptionText.uppercaseString
+    fileprivate func drawDescriptionText(_ gaugeSize: CGFloat) {
+        let text = descriptionText.uppercased()
         let style = NSMutableParagraphStyle()
-        style.alignment = NSTextAlignment.Center
+        style.alignment = NSTextAlignment.center
         let labelAttributes: [String: AnyObject] = [
-            NSFontAttributeName: UIFont.systemFontOfSize(gaugeSize * descriptionTextSize),
+            NSFontAttributeName: UIFont.systemFont(ofSize: gaugeSize * descriptionTextSize),
             NSForegroundColorAttributeName: descriptionTextColor,
             NSParagraphStyleAttributeName: style
         ]
-        let boundingBox = text.sizeWithAttributes(labelAttributes)
-        text.drawInRect(CGRect(origin: CGPoint(x: (gaugeSize - boundingBox.width) / 2, y: (gaugeSize - boundingBox.height) / 2), size: boundingBox), withAttributes: labelAttributes)
+        let boundingBox = text.size(attributes: labelAttributes)
+        text.draw(in: CGRect(origin: CGPoint(x: (gaugeSize - boundingBox.width) / 2, y: (gaugeSize - boundingBox.height) / 2), size: boundingBox), withAttributes: labelAttributes)
     }
     
     
-    private func drawUnitText(gaugeSize: CGFloat) {
+    fileprivate func drawUnitText(_ gaugeSize: CGFloat) {
         let text = unitText
         let labelAttributes: [String: AnyObject] = [
-            NSFontAttributeName: UIFont.systemFontOfSize(gaugeSize * unitTextSize),
+            NSFontAttributeName: UIFont.systemFont(ofSize: gaugeSize * unitTextSize),
             NSForegroundColorAttributeName: unitTextColor
         ]
-        let boundingBox = text.sizeWithAttributes(labelAttributes)
-        text.drawAtPoint(CGPoint(x: gaugeSize, y: gaugeSize - boundingBox.height), withAttributes: labelAttributes)
+        let boundingBox = text.size(attributes: labelAttributes)
+        text.draw(at: CGPoint(x: gaugeSize, y: gaugeSize - boundingBox.height), withAttributes: labelAttributes)
     }
     
     
-    private func drawValue(gaugeSize: CGFloat) {
+    fileprivate func drawValue(_ gaugeSize: CGFloat) {
         let text = showDecimals ? "\(value)" : "\(Int(value))"
         let labelAttributes: [String: AnyObject] = [
-            NSFontAttributeName: UIFont.boldSystemFontOfSize(gaugeSize * valueTextSize),
+            NSFontAttributeName: UIFont.boldSystemFont(ofSize: gaugeSize * valueTextSize),
             NSForegroundColorAttributeName: indicatorColor
         ]
-        let boundingBox = text.sizeWithAttributes(labelAttributes)
-        text.drawAtPoint(CGPoint(x: gaugeSize - boundingBox.width - (gaugeSize*valueTextMargin), y: gaugeSize - boundingBox.height), withAttributes: labelAttributes)
+        let boundingBox = text.size(attributes: labelAttributes)
+        text.draw(at: CGPoint(x: gaugeSize - boundingBox.width - (gaugeSize*valueTextMargin), y: gaugeSize - boundingBox.height), withAttributes: labelAttributes)
     }
     
     
-    private func degreesToRadians(degrees: Double) -> CGFloat {
-        let checkedDegrees = (degrees + 270) % 360;
+    fileprivate func degreesToRadians(_ degrees: Double) -> CGFloat {
+        let checkedDegrees = (degrees + 270).truncatingRemainder(dividingBy: 360);
         let result = (2.0 * M_PI * checkedDegrees) / 360.0;
         return CGFloat(result);
     }

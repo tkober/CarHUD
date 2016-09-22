@@ -134,7 +134,7 @@ void loop() {
         if (status > 0) {
           goto DISCONNECT;
         }
-        //OBD_VALUE_INDEX = copy_obd_values_to_message((OBDValue *)SECONDARY_OBD_VALUES, OBD_VALUE_INDEX, (OBDValue *)LAST_SECONDARY_OBD_VALUE, &message, message_memory+BT_MESSAGE_BORDER);
+        OBD_VALUE_INDEX = copy_obd_values_to_message((OBDValue *)SECONDARY_OBD_VALUES, OBD_VALUE_INDEX, (OBDValue *)LAST_SECONDARY_OBD_VALUE, &message, message_memory+BT_MESSAGE_BORDER);
         OBD_VALUE_INDEX = OBD_VALUE_INDEX > 0 ? OBD_VALUE_INDEX : 0;
 
         send_message(message_memory, BT_MESSAGE_SIZE);

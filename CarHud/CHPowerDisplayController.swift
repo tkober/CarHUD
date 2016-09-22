@@ -35,8 +35,8 @@ class CHPowerDisplayController: CHGaugeViewController, CHSecondaryDisplay {
     
     
     
-    private static let STORYBOARD_NAME = "Main";
-    private static let STORYBOARD_ID = "Power";
+    fileprivate static let STORYBOARD_NAME = "Main";
+    fileprivate static let STORYBOARD_ID = "Power";
     
     
     // MARK: - CHSecondaryDisplay
@@ -44,6 +44,6 @@ class CHPowerDisplayController: CHGaugeViewController, CHSecondaryDisplay {
     
     
     static func display() -> CHSecondaryDisplay {
-        return UIStoryboard(name: self.STORYBOARD_NAME, bundle: nil).instantiateViewControllerWithIdentifier(STORYBOARD_ID) as! CHSecondaryDisplay;
+        return UIStoryboard(name: self.STORYBOARD_NAME, bundle: nil).instantiateViewController(withIdentifier: STORYBOARD_ID) as! CHSecondaryDisplay;
     }
 }

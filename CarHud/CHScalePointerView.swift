@@ -25,20 +25,20 @@ import UIKit
     @IBInspectable var verticalMargin: CGFloat = 20
     
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
-        CGContextSetStrokeColorWithColor(context, self.borderColor.CGColor)
-        CGContextSetLineWidth(context, self.borderWidth)
-        CGContextSetLineCap(context, CGLineCap.Round)
+        context?.setStrokeColor(self.borderColor.cgColor)
+        context?.setLineWidth(self.borderWidth)
+        context?.setLineCap(CGLineCap.round)
         
         
-        CGContextMoveToPoint(context, pointerWidth, verticalMargin)
-        CGContextAddLineToPoint(context, pointerWidth, ((rect.height - pointerHeight) / 2.0))
-        CGContextAddLineToPoint(context, 0, (rect.height / 2.0))
-        CGContextAddLineToPoint(context, pointerWidth, ((rect.height + pointerHeight) / 2.0))
-        CGContextAddLineToPoint(context, pointerWidth, rect.height - verticalMargin)
+        context?.move(to: CGPoint(x: pointerWidth, y: verticalMargin))
+        context?.addLine(to: CGPoint(x: pointerWidth, y: ((rect.height - pointerHeight) / 2.0)))
+        context?.addLine(to: CGPoint(x: 0, y: (rect.height / 2.0)))
+        context?.addLine(to: CGPoint(x: pointerWidth, y: ((rect.height + pointerHeight) / 2.0)))
+        context?.addLine(to: CGPoint(x: pointerWidth, y: rect.height - verticalMargin))
         
-        CGContextDrawPath(context, CGPathDrawingMode.FillStroke)
+        context?.drawPath(using: CGPathDrawingMode.fillStroke)
     }
 
 }

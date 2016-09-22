@@ -21,22 +21,24 @@ protocol CHCommandReceiver {
 
 
 typealias CHOBD2_PID = Int32
-typealias CHValueUpdate = (newValue: NSNumber) -> ();
+typealias CHValueUpdate = (_ newValue: NSNumber) -> ();
 
 
 class CHCarBridgeConnector: CHBLEConnector {
+    
+    private static var __once: () = {
+            Static.instance = CHCarBridgeConnector()
+        }()
     
     // MARK: | Shared Instance
     
     class var sharedInstance : CHCarBridgeConnector {
         struct Static {
-            static var onceToken: dispatch_once_t = 0
+            static var onceToken: Int = 0
             static var instance: CHCarBridgeConnector? = nil
         }
         
-        dispatch_once(&Static.onceToken) {
-            Static.instance = CHCarBridgeConnector()
-        }
+        _ = CHCarBridgeConnector.__once
         return Static.instance!
     }
     
@@ -44,7 +46,7 @@ class CHCarBridgeConnector: CHBLEConnector {
     // MARK: | OBD2 Value Updates
     
     
-    override func updateOBD2ValuesWithData(data: NSData) {
+    override func updateOBD2ValuesWithData(_ data: Data) {
         let parsedValues = CHOBD2Parser.parseData(data)
         for parsedValue in parsedValues.values {
             if let value = parsedValue.value {
@@ -54,9 +56,9 @@ class CHCarBridgeConnector: CHBLEConnector {
     }
     
     
-    func setValue(value: NSNumber, forPID pid: CHOBD2_PID) {
+    func setValue(_ value: NSNumber, forPID pid: CHOBD2_PID) {
         let blockSelf = self
-        dispatch_async(dispatch_get_main_queue()) { 
+        DispatchQueue.main.async { 
             switch pid {
                 
             case PID_SPEED:
@@ -83,9 +85,9 @@ class CHCarBridgeConnector: CHBLEConnector {
     var commandReceiver: CHCommandReceiver?
     
     
-    override func executeCommandWithData(data: NSData) {
+    override func executeCommandWithData(_ data: Data) {
         let blockSelf = self
-        dispatch_async(dispatch_get_main_queue()) { 
+        DispatchQueue.main.async { 
             let command = Int32(data.asUInt8)
             switch command {
                 
@@ -210,64 +212,64 @@ class CHCarBridgeConnector: CHBLEConnector {
     
     
     
-    private var _speed: NSNumber? {
+    fileprivate var _speed: NSNumber? {
         didSet {
             if let update = self.onSpeedUpdate {
-                update(newValue: self.speed!)
+                update(self.speed!)
             }
         }
     }
     
     
-    private var _rpm: NSNumber? {
+    fileprivate var _rpm: NSNumber? {
         didSet {
             if let update = self.onRPMUpdate {
-                update(newValue: self.rpm!)
+                update(self.rpm!)
             }
         }
     }
     
     
-    private var _throttle: NSNumber? {
+    fileprivate var _throttle: NSNumber? {
         didSet {
             if let update = self.onThrottleUpdate {
-                update(newValue: self.throttle!)
+                update(self.throttle!)
             }
         }
     }
     
     
-    private var _engineLoad: NSNumber? {
+    fileprivate var _engineLoad: NSNumber? {
         didSet {
             if let update = self.onEngineLoadUpdate {
-                update(newValue: self.engineLoad!)
+                update(self.engineLoad!)
             }
         }
     }
     
     
-    private var _coolantTemp: NSNumber? {
+    fileprivate var _coolantTemp: NSNumber? {
         didSet {
             if let update = self.onCoolantTempUpdate {
-                update(newValue: self.coolantTemp!)
+                update(self.coolantTemp!)
             }
         }
     }
     
     
-    private var _intakeTemp: NSNumber? {
+    fileprivate var _intakeTemp: NSNumber? {
         didSet {
             if let update = self.onIntakeTempUpdate {
-                update(newValue: self.intakeTemp!)
+                update(self.intakeTemp!)
             }
         }
     }
     
     
-    private var _intakeMAP: NSNumber? {
+    fileprivate var _intakeMAP: NSNumber? {
         didSet {
             if let update = self.onIntakeMAPUpdate {
-                update(newValue: self.intakeMAP!)
+                update(self.intakeMAP!)
             }
         }
     }

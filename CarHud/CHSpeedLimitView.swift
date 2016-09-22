@@ -10,7 +10,7 @@ import UIKit
 
 
 protocol CHSpeedLimitDelegate {
-    func didSelectSpeedLimit(speedLimit: UInt?)
+    func didSelectSpeedLimit(_ speedLimit: UInt?)
 }
 
 
@@ -18,19 +18,19 @@ protocol CHSpeedLimitDelegate {
     
     @IBOutlet var speedLimitDelegate: CHSpeedLimitDisplayController?
     
-    @IBInspectable var unselectedColor: UIColor = UIColor.clearColor() {
+    @IBInspectable var unselectedColor: UIColor = UIColor.clear {
         didSet {
             self.setNeedsDisplay()
         }
     }
     
-    @IBInspectable var selectedSymbolColor: UIColor = UIColor.whiteColor() {
+    @IBInspectable var selectedSymbolColor: UIColor = UIColor.white {
         didSet {
             self.setNeedsDisplay()
         }
     }
     
-    @IBInspectable var selectedFrameColor: UIColor = UIColor.redColor() {
+    @IBInspectable var selectedFrameColor: UIColor = UIColor.red {
         didSet {
             self.setNeedsDisplay()
         }
@@ -60,8 +60,8 @@ protocol CHSpeedLimitDelegate {
         }
     }
     
-    override func drawRect(rect: CGRect) {
-        super.drawRect(rect);
+    override func draw(_ rect: CGRect) {
+        super.draw(rect);
         
         let size = min(rect.height, rect.width)
         let context = UIGraphicsGetCurrentContext()
@@ -70,27 +70,27 @@ protocol CHSpeedLimitDelegate {
         drawFrame(rect, context: context, size: size)
     }
     
-    func drawSymbol(rect: CGRect, context: CGContext?, size: CGFloat) {
+    func drawSymbol(_ rect: CGRect, context: CGContext?, size: CGFloat) {
         let text = "\(self.value)"
         let labelAttributes: [String: AnyObject] = [
-            NSFontAttributeName: UIFont.systemFontOfSize(size * self.symbolSize),
+            NSFontAttributeName: UIFont.systemFont(ofSize: size * self.symbolSize),
             NSForegroundColorAttributeName: self.isSelected ? self.selectedSymbolColor : self.unselectedColor
         ]
-        let boundingBox = text.sizeWithAttributes(labelAttributes)
-        text.drawInRect(CGRect(origin: CGPoint(x: (rect.width - boundingBox.width) / 2, y: (rect.height - boundingBox.height) / 2), size: boundingBox), withAttributes: labelAttributes)
+        let boundingBox = text.size(attributes: labelAttributes)
+        text.draw(in: CGRect(origin: CGPoint(x: (rect.width - boundingBox.width) / 2, y: (rect.height - boundingBox.height) / 2), size: boundingBox), withAttributes: labelAttributes)
     }
     
-    func drawFrame(rect: CGRect, context: CGContext?, size: CGFloat) {
-        CGContextSetStrokeColorWithColor(context, self.isSelected ? self.selectedFrameColor.CGColor : self.unselectedColor.CGColor)
-        CGContextSetLineWidth(context, size * self.frameSize)
+    func drawFrame(_ rect: CGRect, context: CGContext?, size: CGFloat) {
+        context?.setStrokeColor(self.isSelected ? self.selectedFrameColor.cgColor : self.unselectedColor.cgColor)
+        context?.setLineWidth(size * self.frameSize)
         
         let rect = CGRect(x: (rect.width - size + size * self.frameSize) / 2.0,
                           y: (rect.height - size + size * self.frameSize) / 2.0,
                           width: size - size * self.frameSize,
                           height: size - size * self.frameSize)
-        CGContextAddEllipseInRect(context, rect)
+        context?.addEllipse(in: rect)
         
-        CGContextStrokePath(context)
+        context?.strokePath()
     }
     
     func select() {

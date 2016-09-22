@@ -22,7 +22,7 @@ class CHSecondaryDisplaysController: UIPageViewController, UIPageViewControllerD
         super.viewDidLoad()
         self.dataSource = self
         self.currentPage = self.displays[1] as? CHSecondaryDisplayViewController
-        self.setViewControllers([currentPage!], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
+        self.setViewControllers([currentPage!], direction: UIPageViewControllerNavigationDirection.forward, animated: false, completion: nil)
         CHCarBridgeConnector.sharedInstance.commandReceiver = self
     }
     
@@ -43,32 +43,32 @@ class CHSecondaryDisplaysController: UIPageViewController, UIPageViewControllerD
     
     // MARK: - UIPageViewControllerDataSource
 
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         if self.selectedPage != nil {
             return nil
         }
-        let index = (self.displays as NSArray).indexOfObject(viewController)
+        let index = (self.displays as NSArray).index(of: viewController)
         return index < self.displays.count - 1 ? self.displays[index+1] as UIViewController : nil
     }
     
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         if self.selectedPage != nil {
             return nil
         }
-        let index = (self.displays as NSArray).indexOfObject(viewController)
+        let index = (self.displays as NSArray).index(of: viewController)
         return index > 0 ? self.displays[index-1] as UIViewController : nil
     }
     
     
-    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
         return self.displays.count
     }
     
     
-    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         if let controller: AnyObject = pageViewController.viewControllers!.first {
-            return (self.displays as NSArray).indexOfObject(controller)
+            return (self.displays as NSArray).index(of: controller)
         }
         return 0
     }
@@ -80,9 +80,9 @@ class CHSecondaryDisplaysController: UIPageViewController, UIPageViewControllerD
         if let activePage = self.selectedPage {
             activePage.selectNextElement()
         } else {
-            let nextPage = self.pageViewController(self, viewControllerAfterViewController: self.currentPage!) as? CHSecondaryDisplayViewController
+            let nextPage = self.pageViewController(self, viewControllerAfter: self.currentPage!) as? CHSecondaryDisplayViewController
             if let newPage = nextPage {
-                self.setViewControllers([newPage], direction: UIPageViewControllerNavigationDirection.Forward,      animated: true) { (finished: Bool) in
+                self.setViewControllers([newPage], direction: UIPageViewControllerNavigationDirection.forward,      animated: true) { (finished: Bool) in
                     self.currentPage = newPage
                 }
             }
@@ -93,9 +93,9 @@ class CHSecondaryDisplaysController: UIPageViewController, UIPageViewControllerD
         if let activePage = self.selectedPage {
             activePage.selectPreviousElement()
         } else {
-            let nextPage = self.pageViewController(self, viewControllerBeforeViewController: self.currentPage!) as? CHSecondaryDisplayViewController
+            let nextPage = self.pageViewController(self, viewControllerBefore: self.currentPage!) as? CHSecondaryDisplayViewController
             if let newPage = nextPage {
-                self.setViewControllers([newPage], direction: UIPageViewControllerNavigationDirection.Reverse, animated: true) { (finished: Bool) in
+                self.setViewControllers([newPage], direction: UIPageViewControllerNavigationDirection.reverse, animated: true) { (finished: Bool) in
                     self.currentPage = newPage
                 }
             }
@@ -117,7 +117,7 @@ class CHSecondaryDisplaysController: UIPageViewController, UIPageViewControllerD
     
     // MARK: | Displays
     
-    func activateDisplay(display: CHSecondaryDisplayViewController) {
+    func activateDisplay(_ display: CHSecondaryDisplayViewController) {
         self.selectedPage = display
         display.becameActive()
         for view in self.view.subviews {

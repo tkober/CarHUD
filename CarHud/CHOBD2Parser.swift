@@ -17,7 +17,7 @@ internal typealias CHOBD2ParserResult = (values: [CHOBD2ParserRuleResult], error
 
 
 public enum CHOBD2ParserError: Int {
-    case NoRuleToApplyForToken = 1
+    case noRuleToApplyForToken = 1
 }
 
 
@@ -44,7 +44,7 @@ class CHOBD2Parser: NSObject {
     // MARK: | Convinience Methods
     
     
-    internal class func parseData(data: NSData) -> CHOBD2ParserResult {
+    internal class func parseData(_ data: Data) -> CHOBD2ParserResult {
         let parser = CHOBD2Parser(data: data)
         return parser.start()
     }
@@ -53,7 +53,7 @@ class CHOBD2Parser: NSObject {
     // MARK: | Initializer
     
     
-    internal init(data: NSData, rules: [CHOBD2ParserRule] = CHDefaultOBD2ParserRules) {
+    internal init(data: Data, rules: [CHOBD2ParserRule] = CHDefaultOBD2ParserRules) {
         self.data = data
         self.rules = rules
     }
@@ -74,7 +74,7 @@ class CHOBD2Parser: NSObject {
                     result.values.append(ruleResult)
                 }
             } else {
-                result.error = NSError(domain: CHOBD2ParserErrorDomain, code: CHOBD2ParserError.NoRuleToApplyForToken.rawValue, userInfo: CH_OBD2_PARSER_ERROR_NO_RULE_TO_APPLY_FOR_TOKEN_USER_INFO)
+                result.error = NSError(domain: CHOBD2ParserErrorDomain, code: CHOBD2ParserError.noRuleToApplyForToken.rawValue, userInfo: CH_OBD2_PARSER_ERROR_NO_RULE_TO_APPLY_FOR_TOKEN_USER_INFO)
                 break
             }
         }
@@ -87,10 +87,10 @@ class CHOBD2Parser: NSObject {
     // MARK: | Rules
     
     
-    private var rules: [CHOBD2ParserRule]
+    fileprivate var rules: [CHOBD2ParserRule]
     
     
-    private func ruleForLookAhead(lookAhead: CHLookAhead) -> CHOBD2ParserRule? {
+    fileprivate func ruleForLookAhead(_ lookAhead: CHLookAhead) -> CHOBD2ParserRule? {
         for rule in self.rules {
             if rule.pid == lookAhead.asInt32 {
                 return rule
@@ -103,8 +103,8 @@ class CHOBD2Parser: NSObject {
     // MARK: | Scanner
     
     
-    private var data: NSData
+    fileprivate var data: Data
     
     
-    private lazy var scanner: CHScanner = CHScanner(data: self.data)
+    fileprivate lazy var scanner: CHScanner = CHScanner(data: self.data)
 }
